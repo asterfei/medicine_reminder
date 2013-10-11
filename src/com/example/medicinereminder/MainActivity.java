@@ -17,6 +17,7 @@ import com.parse.ParseAnalytics;
 public class MainActivity extends Activity {
 	public static final int LoginActivity_ID = 1;
 	
+	//this is a test modification
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 			super.onCreate(savedInstanceState);
