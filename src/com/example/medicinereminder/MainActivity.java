@@ -16,7 +16,6 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		// connected to Parse database
 		Parse.initialize(this, "q14R25Covh35iR5YriM6dfBKQA2dccIgc4ymdr1T",
 				"vABJVijqAyuZSgDq3kY0ScL4ZX3TQZS8KMg330Fk");
 		ParseAnalytics.trackAppOpened(getIntent());
