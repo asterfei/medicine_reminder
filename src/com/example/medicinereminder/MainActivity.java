@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
 		Parse.initialize(this, "q14R25Covh35iR5YriM6dfBKQA2dccIgc4ymdr1T",
 				"vABJVijqAyuZSgDq3kY0ScL4ZX3TQZS8KMg330Fk");
 		ParseAnalytics.trackAppOpened(getIntent());
+		System.out.println("SS");
 	}
 
 	@Override
