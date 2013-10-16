@@ -1,6 +1,9 @@
 package com.example.medicinereminder;
 
 
+import java.util.Arrays;
+import java.util.List;
+
 import com.parse.GetCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
@@ -20,6 +23,7 @@ public class LoginActivity extends Activity {
 	public static final int MedicationActivity_ID = 1;
 	private String username = "";
 	private String password = "";
+	private boolean flag = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,26 +45,31 @@ public class LoginActivity extends Activity {
 	}
 
 	public void onLoginClick(View view) {
-		boolean flag = false;
-		EditText e1 = (EditText) findViewById(R.id.editText1);
+
+		EditText e1 = (EditText) findViewById(R.id.widget33);
 		username = e1.getText().toString();
 		Log.i("Info", username);
 
-		EditText e2 = (EditText) findViewById(R.id.editText2);
+		EditText e2 = (EditText) findViewById(R.id.widget35);
 		password = e2.getText().toString();
 		Log.i("Info", password);
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("UserInfo");
-		query.getInBackground("xWMyZ4YEGZ", new GetCallback<ParseObject>() {
-		  public void done(ParseObject object, ParseException e) {
-		    if (e == null) {
-		      // object will be your game score
-		    } else {
-		      // something went wrong
-		    }
-		  }
-		});
-		
+		query.selectKeys(Arrays.asList("Username", "Password"));
+		;
+		try {
+			List<ParseObject> results = query.find();
+			for (ParseObject user : results) {
+				String tempUser = user.getString("Username");
+				String tempPass = user.getString("Password");
+				if (tempPass.equals(password) && tempUser.equals(username)) {
+					flag = true;
+				}
+			}
+		} catch (ParseException e) {
+			Log.i("Info", "Error: " + e.getMessage());
+		}
+
 		if (username.equals("")) {
 			new AlertDialog.Builder(this).setTitle("Error")
 					.setMessage("You cannot leave any fields blank")

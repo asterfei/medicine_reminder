@@ -36,14 +36,17 @@
 	android:textSize="17sp"
 	android:layout_x="38dp"
 	android:layout_y="139dp" />
+
 <Button
-	android:id="@+id/widget37"
-	android:layout_width="111dp"
-	android:layout_height="wrap_content"
-	android:text="Log In"
-	android:textSize="17sp"
-	android:layout_x="31dp"
-	android:layout_y="226dp" />
+    android:id="@+id/widget37"
+    android:layout_width="111dp"
+    android:layout_height="wrap_content"
+    android:layout_x="31dp"
+    android:layout_y="226dp"
+    android:onClick="onLoginClick"
+    android:text="Log In"
+    android:textSize="17sp" />
+
 <Button
 	android:id="@+id/widget38"
 	android:layout_width="113dp"
