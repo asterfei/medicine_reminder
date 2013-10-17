@@ -17,9 +17,9 @@ public class SetRefillsTest {
 	}
 
 	protected void setUp() throws Exception {
-		day = data.appointmentsDay;
-		month = data.appointmentsMonth;
-		year = data.appointmentsYear;
+		day = data.refillTime.getDate();
+		month = data.refillTime.getMonth();
+		year = data.refillTime.getYear();
 	}
 	
 	@Test

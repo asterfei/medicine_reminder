@@ -2,6 +2,11 @@ package com.example.medicinereminder;
 
 import java.util.Calendar;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -47,6 +52,23 @@ public class ReminderTimeActivity extends Activity {
 		
 		Log.i("Info", String.valueOf(mins));
 		data.mins = mins;
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("UserInfo");
+		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			public void done(ParseObject object, ParseException e) {
+				if (e == null) {
+					object.put("min", mins);
+					object.saveInBackground();
+				} else {
+					
+				}
+			}
+		});
+		
+		ParseObject userLog = new ParseObject("UserLog");
+		userLog.put("UserName", data.userName);
+		userLog.put("From", "ReminderTimeActivity");
+		userLog.put("To", "SetReminderActivity");
+		userLog.saveInBackground();
 		
 		Intent i = new Intent(this, SetReminderActivity.class);
 		startActivityForResult(i, SetReminderActivity_ID);

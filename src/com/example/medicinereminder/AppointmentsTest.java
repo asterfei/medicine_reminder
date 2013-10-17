@@ -2,6 +2,8 @@ package com.example.medicinereminder;
 
 import static org.junit.Assert.*;
 
+import java.util.Date;
+
 import org.junit.Test;
 
 
@@ -11,16 +13,16 @@ public class AppointmentsTest {
 	private int year = 0;
 	private int month = 0;
 	private int day = 0;
-	private Time time = null;
+	private Date time = null;
 	
 	public AppointmentsTest(String name) {
 		super();
 	}
 
 	protected void setUp() throws Exception {
-		day = data.appointmentsDay;
-		month = data.appointmentsMonth;
-		year = data.appointmentsYear;
+		day = data.appointmentsTime.getDay();
+		month = data.appointmentsTime.getMonth();
+		year = data.appointmentsTime.getYear();
 		time = data.appointmentsTime;
 	}
 	
@@ -33,8 +35,8 @@ public class AppointmentsTest {
 	
 	@Test
 	public void testHour(){
-		assertEquals(time.getHour(), 11);
-		assertEquals(time.getMinute(), 0);
+		assertEquals(time.getHours(), 11);
+		assertEquals(time.getMinutes(), 0);
 	}
 	
 	

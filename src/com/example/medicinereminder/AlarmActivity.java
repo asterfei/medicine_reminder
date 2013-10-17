@@ -1,5 +1,7 @@
 package com.example.medicinereminder;
 
+import com.parse.ParseObject;
+
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Intent;
@@ -16,43 +18,54 @@ import android.widget.TextView;
 import android.view.Menu;
 
 public class AlarmActivity extends Activity {
-	//AlarmSet alarmSet;
+	// AlarmSet alarmSet;
 	String time;
 	public static final int TakeOption_ID = 1;
-	 @Override
+	private Database data = Database.getInstance();
+
+	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		 super.onCreate(savedInstanceState);
-		 Database database = Database.getInstance();
-		 
-		 setContentView(R.layout.alarm_page);
-		 TextView out = (TextView)findViewById(R.id.alarmMessage);
-		 out.append(database.message);
-	 }
-
-
-	 public class SpinnerActivity extends Activity implements OnItemSelectedListener {
-
-
-		 public void onItemSelected(AdapterView<?> parent, View view, 
-				 int pos, long id) {
-			 	// An item was selected. You can retrieve the selected item using
-			 	time =(String)parent.getItemAtPosition(pos);
-		 }
-
-		    public void onNothingSelected(AdapterView<?> parent) {
-		        time = "5";
-		    }
-		}
-
-	 public void onIgnoreButtonClick(View view){
-		 finish();
-	 }
-	 
-	 public void onOpenButtonClick(View view){
-			Intent i = new Intent(this, TakeOption.class);
-			startActivityForResult(i, TakeOption_ID);
-			
+		super.onCreate(savedInstanceState);
+		
+		ParseObject userLog = new ParseObject("UserLog");
+		userLog.put("UserName", data.userName);
+		userLog.put("From", "");
+		userLog.put("To", "AlarmActivity");
+		userLog.saveInBackground();
+		
+		setContentView(R.layout.alarm_page);
+		TextView out = (TextView) findViewById(R.id.alarmMessage);
+		out.append(data.message);
 	}
 
+	public class SpinnerActivity extends Activity implements
+			OnItemSelectedListener {
+
+		public void onItemSelected(AdapterView<?> parent, View view, int pos,
+				long id) {
+			// An item was selected. You can retrieve the selected item using
+			time = (String) parent.getItemAtPosition(pos);
+		}
+
+		public void onNothingSelected(AdapterView<?> parent) {
+			time = "5";
+		}
+	}
+
+	public void onIgnoreButtonClick(View view) {
+		finish();
+	}
+
+	public void onOpenButtonClick(View view) {
+		ParseObject userLog = new ParseObject("UserLog");
+		userLog.put("UserName", data.userName);
+		userLog.put("From", "AlarmActivity");
+		userLog.put("To", "TakeOption");
+		userLog.saveInBackground();
+		
+		Intent i = new Intent(this, TakeOption.class);
+		startActivityForResult(i, TakeOption_ID);
+
+	}
 
 }

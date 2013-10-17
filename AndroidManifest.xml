@@ -32,7 +32,6 @@
         <activity android:name="com.example.medicinereminder.SetRefillsActivity"/>
         <activity android:name="com.example.medicinereminder.SetReminderActivity"/>
         <activity android:name="com.example.medicinereminder.ReminderTimeActivity"/>
-        <activity android:name="com.example.medicinereminder.ReminderTimeActivity2"/>
         <activity android:name="com.example.medicinereminder.TakeOption"/>
         <activity android:name="com.example.medicinereminder.Avatar"/>
         <activity android:name="com.example.medicinereminder.Tutorial"/>

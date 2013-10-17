@@ -1,8 +1,12 @@
 package com.example.medicinereminder;
 
+import java.util.Date;
+
 public class Database {
 
 	private static Database singletonInstance = null;
+	protected String objectId = "";
+	protected String userName = "";
 	protected String firstName = ""; 
 	protected String lastName = "";
 	protected int avatarnumber = 0;
@@ -12,17 +16,11 @@ public class Database {
 	protected String providerPhone = "";
 	protected String medication1 = "";
 	protected String medication2 = "";
-	protected String medication3 = "";
-	protected Time medicationTime1 = null;
-	protected Time medicationTime2 = null;
+	protected Date medicationTime1 = null;
+	protected Date medicationTime2 = null;
 	protected String message = "";
-	protected int appointmentsYear = 0;
-	protected int appointmentsMonth = 0;
-	protected int appointmentsDay = 0;
-	protected Time appointmentsTime = null;
-	protected int refillYear = 0;
-	protected int refillMonth = 0;
-	protected int refillDay = 0;
+	protected Date appointmentsTime = null;
+	protected Date refillTime = null;
 	protected int snoozeTime = 0;
 	protected int mins = 0;
 	protected int notTakenCount = 0;

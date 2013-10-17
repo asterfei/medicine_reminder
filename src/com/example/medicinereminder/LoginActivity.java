@@ -1,10 +1,8 @@
 package com.example.medicinereminder;
 
-
 import java.util.Arrays;
 import java.util.List;
 
-import com.parse.GetCallback;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseException;
@@ -24,6 +22,7 @@ public class LoginActivity extends Activity {
 	private String username = "";
 	private String password = "";
 	private boolean flag = false;
+	private Database data = Database.getInstance();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +63,11 @@ public class LoginActivity extends Activity {
 				String tempPass = user.getString("Password");
 				if (tempPass.equals(password) && tempUser.equals(username)) {
 					flag = true;
+					data.userName = tempUser;
+					data.objectId = user.getObjectId();
+//					if (!user.getString("medication1").equals("")) {
+//						data.medication1 = user.getString("medication1");
+//					}
 				}
 			}
 		} catch (ParseException e) {
@@ -83,7 +87,18 @@ public class LoginActivity extends Activity {
 					.setMessage("Wrong username or password!")
 					.setNeutralButton("close", null).show();
 		} else {
+			ParseObject userLog = new ParseObject("UserLog");
+			userLog.put("UserName", data.userName);
+			userLog.put("From", "LoginActivity");
+			userLog.put("To", "MedicationActivity");
+			userLog.saveInBackground();
+
 			Intent intent = new Intent();
+//			if (data.medication1.equals("")) {
+//				intent.setClass(LoginActivity.this, MedicationActivity.class);
+//			} else {
+//				intent.setClass(LoginActivity.this, HomeScreen.class);
+//			}
 			intent.setClass(LoginActivity.this, MedicationActivity.class);
 			startActivity(intent);
 		}
