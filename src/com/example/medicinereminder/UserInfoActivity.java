@@ -1,8 +1,12 @@
 package com.example.medicinereminder;
 
+import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.ParseQuery;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -114,37 +118,49 @@ public class UserInfoActivity extends Activity {
 					.setMessage("Please enter a valid provider phone number")
 					.setNeutralButton("close", null).show();
 		} else {
-			ParseObject userInfo = new ParseObject("UserInfo");
-			userInfo.put("Username", username);
-			userInfo.put("Password", password);
-			userInfo.put("first_name", first_name);
-			userInfo.put("last_name", last_name);
-			userInfo.put("dateOfDiagnosis", dateOfDiagnosis);
-			userInfo.put("viralLoad", viralLoad);
-			userInfo.put("phone", phone);
-			userInfo.put("providerPhone", providerPhone);
-			userInfo.put("notTakenCount", 0);
-			userInfo.put("takenCount", 0);
-//			userInfo.put("medication1", "");
-//			userInfo.put("medication2", "");
-//			userInfo.put("medicationTime1", "");
-//			userInfo.put("medicationTime2", "");
-//			userInfo.put("message", "");
-//			userInfo.put("appointmentsTime", "");
-//			userInfo.put("refillTime", "");
-//			userInfo.put("snoozeTime", 0);
-//			userInfo.put("mins", 0);
-			userInfo.saveInBackground();
-			data.objectId = userInfo.getObjectId();
+			boolean userExist = false;
+			ParseQuery<ParseObject> query = ParseQuery.getQuery("UserInfo");
+			query.selectKeys(Arrays.asList("Username"));
+			try {
+				List<ParseObject> results = query.find();
+				for (ParseObject user : results) {
+					String tempUser = user.getString("Username");
+					if (tempUser.equals(username)) {
+						userExist = true;
+					}
+				}
+			} catch (ParseException e) {
+				Log.i("Info", "Error: " + e.getMessage());
+			}
 			
-			ParseObject userLog = new ParseObject("UserLog");
-			userLog.put("UserName", data.userName);
-			userLog.put("From", "UserInfoActivity");
-			userLog.put("To", "MedicationActivity");
-			userLog.saveInBackground();
+			if(userExist){
+				new AlertDialog.Builder(this).setTitle("Error")
+				.setMessage("The userName is existed!")
+				.setNeutralButton("close", null).show();
+			} else{
+				ParseObject userInfo = new ParseObject("UserInfo");
+				userInfo.put("Username", username);
+				userInfo.put("Password", password);
+				userInfo.put("first_name", first_name);
+				userInfo.put("last_name", last_name);
+				userInfo.put("dateOfDiagnosis", dateOfDiagnosis);
+				userInfo.put("viralLoad", viralLoad);
+				userInfo.put("phone", phone);
+				userInfo.put("providerPhone", providerPhone);
+				userInfo.put("notTakenCount", 0);
+				userInfo.put("takenCount", 0);
+				userInfo.saveInBackground();
+				data.objectId = userInfo.getObjectId();
+				
+				ParseObject userLog = new ParseObject("UserLog");
+				userLog.put("UserName", data.userName);
+				userLog.put("From", "UserInfoActivity");
+				userLog.put("To", "MedicationActivity");
+				userLog.saveInBackground();
 
-			Intent i = new Intent(this, MedicationActivity.class);
-			startActivityForResult(i, MedicationActivity_ID);
+				Intent i = new Intent(this, MedicationActivity.class);
+				startActivityForResult(i, MedicationActivity_ID);
+			}
 		}
 
 	}
