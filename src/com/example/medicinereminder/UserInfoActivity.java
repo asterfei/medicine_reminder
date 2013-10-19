@@ -22,13 +22,15 @@ public class UserInfoActivity extends Activity {
 	public static final int MedicationActivity_ID = 1;
 	private String username = "";
 	private String password = "";
-	private String first_name = "";
-	private String last_name = "";
+	private String firstName = "";
+	private String lastName = "";
 	private String dateOfDiagnosis = "";
 	private String viralLoad = "";
 	private String phone = "";
 	private String providerPhone = "";
 	private Database data = Database.getInstance();
+	private AvatarInformation avatar = AvatarInformation.getInstance();
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,13 +55,14 @@ public class UserInfoActivity extends Activity {
 		Log.i("Info", password);
 
 		EditText e3 = (EditText) findViewById(R.id.editText3);
-		first_name = e3.getText().toString();
-		Log.i("Info", first_name);
+		firstName = e3.getText().toString();
+		Log.i("Info", firstName);
+		data.firstName = firstName;
 
 		EditText e4 = (EditText) findViewById(R.id.editText4);
-		last_name = e4.getText().toString();
-		Log.i("Info", last_name);
-		data.lastName = last_name;
+		lastName = e4.getText().toString();
+		Log.i("Info", lastName);
+		data.lastName = lastName;
 
 		EditText e5 = (EditText) findViewById(R.id.editText5);
 		dateOfDiagnosis = e5.getText().toString();
@@ -91,11 +94,11 @@ public class UserInfoActivity extends Activity {
 					.setNeutralButton("close", null).show();
 		}
 
-		else if (first_name.equals("")) {
+		else if (firstName.equals("")) {
 			new AlertDialog.Builder(this).setTitle("Error")
 					.setMessage("You cannot leave any fields blank")
 					.setNeutralButton("close", null).show();
-		} else if (last_name.equals("")) {
+		} else if (lastName.equals("")) {
 			new AlertDialog.Builder(this).setTitle("Error")
 					.setMessage("You cannot leave any fields blank")
 					.setNeutralButton("close", null).show();
@@ -141,8 +144,8 @@ public class UserInfoActivity extends Activity {
 				ParseObject userInfo = new ParseObject("UserInfo");
 				userInfo.put("Username", username);
 				userInfo.put("Password", password);
-				userInfo.put("first_name", first_name);
-				userInfo.put("last_name", last_name);
+				userInfo.put("firstName", firstName);
+				userInfo.put("lastName", lastName);
 				userInfo.put("dateOfDiagnosis", dateOfDiagnosis);
 				userInfo.put("viralLoad", viralLoad);
 				userInfo.put("phone", phone);
@@ -151,7 +154,38 @@ public class UserInfoActivity extends Activity {
 				userInfo.put("takenCount", 0);
 				userInfo.put("buck", 0);
 				userInfo.saveInBackground();
-				data.objectId = userInfo.getObjectId();
+				
+				ParseQuery<ParseObject> query2 = ParseQuery.getQuery("UserInfo");
+				query2.selectKeys(Arrays.asList("Username"));
+				try {
+					List<ParseObject> results = query2.find();
+					for (ParseObject user : results) {
+						String tempUser = user.getString("Username");
+						if (tempUser.equals(username)) {
+							data.objectId = userInfo.getObjectId();
+						}
+					}
+				} catch (ParseException e) {
+					Log.i("Info", "Error: " + e.getMessage());
+				}
+				
+				Log.i("latet username: ", username);
+				ParseObject newAvatar = new ParseObject("Avatar");
+				newAvatar.put("userName", username);
+				newAvatar.saveInBackground();
+				
+				ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Avatar");
+				try {
+					List<ParseObject> results = query3.find();
+					for (ParseObject ava : results) {
+						String tempUser2 = ava.getString("userName");
+						if (tempUser2.equals(username)) {
+							avatar.objectId = ava.getObjectId();
+						}
+					}
+				} catch (ParseException e) {
+					Log.i("Info", "Error: " + e.getMessage());
+				}
 				
 				ParseObject userLog = new ParseObject("UserLog");
 				userLog.put("UserName", data.userName);

@@ -24,7 +24,7 @@ public class LoginActivity extends Activity {
 	private String password = "";
 	private boolean flag = false;
 	private Database data = Database.getInstance();
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -55,8 +55,7 @@ public class LoginActivity extends Activity {
 		Log.i("Info", password);
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("UserInfo");
-		query.selectKeys(Arrays.asList("Username", "Password"));
-		
+//		query.selectKeys(Arrays.asList("Username", "Password"));
 		try {
 			List<ParseObject> results = query.find();
 			for (ParseObject user : results) {
@@ -64,31 +63,8 @@ public class LoginActivity extends Activity {
 				String tempPass = user.getString("Password");
 				if (tempPass.equals(password) && tempUser.equals(username)) {
 					flag = true;
-					data.userName = tempUser;
+					data.userName = username;
 					data.objectId = user.getObjectId();
-					data.firstName = user.getString("firstName");
-					data.lastName = user.getString("lastName");
-					data.avatarnumber = user.getInt("avatarnumber");
-					data.dateOfDiagnosis = user.getString("dateOfDiagnosis");
-					data.viralLoad = user.getString("viralLoad");
-					data.phone = user.getString("phone");
-					data.providerPhone = user.getString("providerPhone");
-					
-					data.medication1 = user.getString("medication1");
-					data.medication2 = user.getString("medication2");
-					data.medicationTime1 = user.getDate("medicationTime1");
-					data.medicationTime2 = user.getDate("medicationTime2");
-
-					data.message = user.getString("message");
-					data.appointmentsTime = user.getDate("appointmentsTime");
-					data.refillTime = user.getDate("refillTime");
-					
-					data.snoozeTime = user.getInt("snoozeTime");
-					data.mins = user.getInt("mins");
-					data.notTakenCount = user.getInt("notTakenCount");
-					data.takenCount = user.getInt("takenCount");
-					data.buck = user.getInt("buck");
-
 				}
 			}
 		} catch (ParseException e) {
@@ -115,11 +91,11 @@ public class LoginActivity extends Activity {
 			userLog.saveInBackground();
 
 			Intent intent = new Intent();
-//			if (data.medication1.equals("")) {
-//				intent.setClass(LoginActivity.this, MedicationActivity.class);
-//			} else {
-//				intent.setClass(LoginActivity.this, HomeScreen.class);
-//			}
+			// if (data.medication1.equals("")) {
+			// intent.setClass(LoginActivity.this, MedicationActivity.class);
+			// } else {
+			// intent.setClass(LoginActivity.this, HomeScreen.class);
+			// }
 			intent.setClass(LoginActivity.this, MedicationActivity.class);
 			startActivity(intent);
 		}

@@ -34,6 +34,7 @@
         <activity android:name="com.example.medicinereminder.ReminderTimeActivity"/>
         <activity android:name="com.example.medicinereminder.TakeOption"/>
         <activity android:name="com.example.medicinereminder.Avatar"/>
+        <activity android:name="com.example.medicinereminder.AvatarEdit"/>
         <activity android:name="com.example.medicinereminder.Tutorial"/>
         <activity android:name="com.example.medicinereminder.HomeScreen"/>
         <activity android:name="com.example.medicinereminder.SnoozeActivity"/>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        android:textColor="#90006300"
+        android:text="@string/whatmeds"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="22sp" />
+       
+       
+       <TextView
+           android:id="@+id/result"
+           android:background="#2090EE90"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_below="@+id/add" />
+
+       <EditText
+           android:id="@+id/medName"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_alignParentLeft="true"
+           android:layout_below="@+id/title"
+           android:ems="10"
+           android:hint="@string/med"
+           android:textSize="22sp" >
+
+           <requestFocus />
+       </EditText>
+
+       <TimePicker
+           android:id="@+id/timePicker1"
+           android:layout_width="wrap_content"
+           android:layout_height="120dp"
+           android:layout_below="@+id/medName"
+           android:layout_centerHorizontal="true"
+           android:layout_marginTop="17dp" />
+
+       <Button
+           android:id="@+id/add"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_below="@+id/timePicker1"
+           android:layout_marginRight="18dp"
+           android:layout_marginTop="26dp"
+           android:layout_toLeftOf="@+id/finish"
+           android:text="Add" 
+           android:onClick="onAddButtonClick"
+           android:background="#7090cE90"
+           android:textSize="20sp"/>
+       
+       
+       <Button
+           android:id="@+id/finish"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_alignBaseline="@id/add"
+           android:layout_alignBottom="@id/add"
+           android:layout_alignParentRight="true"
+           android:layout_marginRight="16dp"
+           android:text="Finish"
+           android:onClick = "onFinishButtonClick"
+           android:background="#7090cE90"
+           android:textSize = "20sp" />
+
+</RelativeLayout>
