@@ -87,6 +87,7 @@ public class LoginActivity extends Activity {
 					data.mins = user.getInt("mins");
 					data.notTakenCount = user.getInt("notTakenCount");
 					data.takenCount = user.getInt("takenCount");
+					data.buck = user.getInt("buck");
 
 				}
 			}

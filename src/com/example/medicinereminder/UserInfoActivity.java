@@ -149,6 +149,7 @@ public class UserInfoActivity extends Activity {
 				userInfo.put("providerPhone", providerPhone);
 				userInfo.put("notTakenCount", 0);
 				userInfo.put("takenCount", 0);
+				userInfo.put("buck", 0);
 				userInfo.saveInBackground();
 				data.objectId = userInfo.getObjectId();
 				

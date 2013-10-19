@@ -21,6 +21,7 @@ public class Database {
 	protected String message = "";
 	protected Date appointmentsTime = null;
 	protected Date refillTime = null;
+	protected int buck = 0;
 	protected int snoozeTime = 0;
 	protected int mins = 0;
 	protected int notTakenCount = 0;

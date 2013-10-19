@@ -66,6 +66,20 @@ public class TakeOption extends Activity {
 				}
 			}
 		});
+		
+		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("UserInfo");
+		query2.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			public void done(ParseObject object, ParseException e) {
+				if (e == null) {
+					int buck = data.buck + 1;
+					object.put("buck", buck);
+					object.saveInBackground();
+				} else {
+
+				}
+			}
+		});
+		
 		new AlertDialog.Builder(this).setTitle("Good Job :)")
 				.setMessage("Keep it up!").setNeutralButton("close", null)
 				.show();
@@ -142,12 +156,25 @@ public class TakeOption extends Activity {
 		userLog.put("From", "TakeOption");
 		userLog.put("To", "TakePillPictureActivity");
 		userLog.saveInBackground();
-
+		
 		Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
 		File file = new File(Environment.getExternalStorageDirectory(),
 				"test.jpg");
-
 		imageUri = Uri.fromFile(file);
+		
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("UserInfo");
+		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			public void done(ParseObject object, ParseException e) {
+				if (e == null) {
+					int buck = data.buck + 2;
+					object.put("buck", buck);
+					object.saveInBackground();
+				} else {
+
+				}
+			}
+		});
+		
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
 		startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
@@ -156,7 +183,6 @@ public class TakeOption extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 			if (resultCode == RESULT_OK) {
-
 			} else if (resultCode == RESULT_CANCELED) {
 				Toast.makeText(this, "Picture was not taken",
 						Toast.LENGTH_SHORT).show();
@@ -167,4 +193,42 @@ public class TakeOption extends Activity {
 		}
 	}
 
+	public void onRefillButtonClick(View view) {
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("UserInfo");
+		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			public void done(ParseObject object, ParseException e) {
+				if (e == null) {
+					int buck = data.buck + 10;
+					object.put("buck", buck);
+					object.saveInBackground();
+				} else {
+
+				}
+			}
+		});
+		new AlertDialog.Builder(this).setTitle("Good Job :)")
+				.setMessage("Please set refill for next time!").setNeutralButton("close", null)
+				.show();
+
+	}
+	
+	public void onOfficeButtonClick(View view) {
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("UserInfo");
+		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			public void done(ParseObject object, ParseException e) {
+				if (e == null) {
+					int buck = data.buck + 10;
+					object.put("buck", buck);
+					object.saveInBackground();
+				} else {
+
+				}
+			}
+		});
+		new AlertDialog.Builder(this).setTitle("Good Job :)")
+				.setMessage("Please set next office hour for next time!").setNeutralButton("close", null)
+				.show();
+
+	}
+	
 }
