@@ -43,7 +43,6 @@ public class AvatarEdit extends Activity {
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					object.put("imageNum", avatar.imageNum);
-					object.put("userName", avatar.userName);
 					object.put("nickName", avatar.nickName);
 					object.put("hobby", avatar.hobby);
 					object.put("dreamJob", avatar.dreamJob);

@@ -31,7 +31,6 @@ public class UserInfoActivity extends Activity {
 	private Database data = Database.getInstance();
 	private AvatarInformation avatar = AvatarInformation.getInstance();
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -135,12 +134,12 @@ public class UserInfoActivity extends Activity {
 			} catch (ParseException e) {
 				Log.i("Info", "Error: " + e.getMessage());
 			}
-			
-			if(userExist){
+
+			if (userExist) {
 				new AlertDialog.Builder(this).setTitle("Error")
-				.setMessage("The userName is existed!")
-				.setNeutralButton("close", null).show();
-			} else{
+						.setMessage("The userName is existed!")
+						.setNeutralButton("close", null).show();
+			} else {
 				ParseObject userInfo = new ParseObject("UserInfo");
 				userInfo.put("Username", username);
 				userInfo.put("Password", password);
@@ -154,8 +153,9 @@ public class UserInfoActivity extends Activity {
 				userInfo.put("takenCount", 0);
 				userInfo.put("buck", 0);
 				userInfo.saveInBackground();
-				
-				ParseQuery<ParseObject> query2 = ParseQuery.getQuery("UserInfo");
+
+				ParseQuery<ParseObject> query2 = ParseQuery
+						.getQuery("UserInfo");
 				query2.selectKeys(Arrays.asList("Username"));
 				try {
 					List<ParseObject> results = query2.find();
@@ -168,12 +168,12 @@ public class UserInfoActivity extends Activity {
 				} catch (ParseException e) {
 					Log.i("Info", "Error: " + e.getMessage());
 				}
-				
-				Log.i("latet username: ", username);
+
 				ParseObject newAvatar = new ParseObject("Avatar");
 				newAvatar.put("userName", username);
 				newAvatar.saveInBackground();
-				
+				avatar.userName = username;
+
 				ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Avatar");
 				try {
 					List<ParseObject> results = query3.find();
@@ -186,7 +186,7 @@ public class UserInfoActivity extends Activity {
 				} catch (ParseException e) {
 					Log.i("Info", "Error: " + e.getMessage());
 				}
-				
+
 				ParseObject userLog = new ParseObject("UserLog");
 				userLog.put("UserName", data.userName);
 				userLog.put("From", "UserInfoActivity");
