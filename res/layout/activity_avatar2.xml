@@ -27,7 +27,7 @@
         android:background="#5090EE90"
         android:text="Avatar Profile"
         android:textColor="#696969"
-        android:textSize="23sp" />
+        android:textSize="25sp" />
 
     <TextView
         android:id="@+id/nickName"
