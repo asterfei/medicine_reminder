@@ -66,13 +66,13 @@ public class AvatarDisplay extends Activity{
 					R.drawable.loki9));
 	
 		nicknameinput = (TextView) findViewById(R.id.textView3);
-		nicknameinput.setText(":" + nickname);
+		nicknameinput.setText(": " + nickname);
 		hobbiesinput = (TextView) findViewById(R.id.textView5);
-		hobbiesinput.setText(":" + hobbies);
+		hobbiesinput.setText(": " + hobbies);
 		dreamjobinput = (TextView) findViewById(R.id.textView7);
-		dreamjobinput.setText(":" + dreamjob);
+		dreamjobinput.setText(": " + dreamjob);
 		ShoutBucksinput = (TextView) findViewById(R.id.textView9);
-		ShoutBucksinput.setText(":"+ shoutbuck);
+		ShoutBucksinput.setText(": "+ shoutbuck);
 	}
 
 	@Override
