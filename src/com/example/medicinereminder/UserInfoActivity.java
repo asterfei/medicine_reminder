@@ -46,40 +46,40 @@ public class UserInfoActivity extends Activity {
 
 	public void onContinueButtonClick(View view) {
 		EditText e1 = (EditText) findViewById(R.id.editText1);
-		username = e1.getText().toString();
+		username = e1.getText().toString().trim();
 		Log.i("Info", username);
 
 		EditText e2 = (EditText) findViewById(R.id.editText2);
-		password = e2.getText().toString();
+		password = e2.getText().toString().trim();
 		Log.i("Info", password);
 
 		EditText e3 = (EditText) findViewById(R.id.editText3);
-		firstName = e3.getText().toString();
+		firstName = e3.getText().toString().trim();
 		Log.i("Info", firstName);
 		data.firstName = firstName;
 
 		EditText e4 = (EditText) findViewById(R.id.editText4);
-		lastName = e4.getText().toString();
+		lastName = e4.getText().toString().trim();
 		Log.i("Info", lastName);
 		data.lastName = lastName;
 
 		EditText e5 = (EditText) findViewById(R.id.editText5);
-		dateOfDiagnosis = e5.getText().toString();
+		dateOfDiagnosis = e5.getText().toString().trim();
 		Log.i("Info", dateOfDiagnosis);
 		data.dateOfDiagnosis = dateOfDiagnosis;
 
 		EditText e6 = (EditText) findViewById(R.id.editText6);
-		viralLoad = e6.getText().toString();
+		viralLoad = e6.getText().toString().trim();
 		Log.i("Info", viralLoad);
 		data.viralLoad = viralLoad;
 
 		EditText e7 = (EditText) findViewById(R.id.editText7);
-		phone = e7.getText().toString();
+		phone = e7.getText().toString().trim();
 		Log.i("Info", phone);
 		data.phone = phone;
 
 		EditText e8 = (EditText) findViewById(R.id.editText8);
-		providerPhone = e8.getText().toString();
+		providerPhone = e8.getText().toString().trim();
 		Log.i("Info", providerPhone);
 		data.providerPhone = providerPhone;
 

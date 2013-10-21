@@ -47,19 +47,23 @@ public class TakeOption extends Activity {
 		userLog.put("To", "HomeScreen");
 		userLog.saveInBackground();
 
-		Intent i = new Intent(this, HomeScreen.class);
-		startActivityForResult(i, HomeScreen_ID);
+		
+		Intent intent = new Intent();
+		intent.setClass(TakeOption.this, HomeScreen.class);
+		startActivity(intent);
 	}
 
 	public void onTookButtonClick(View view) {
 		data.notTakenCount = 0;
 		data.takenCount += 1;
+		data.buck+=1;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("UserInfo");
 		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
-					object.put("notTakenCount", 0);
+					//object.put("notTakenCount", 0);
 					object.put("takenCount", data.takenCount);
+					object.put("buck", data.buck);
 					object.saveInBackground();
 				} else {
 

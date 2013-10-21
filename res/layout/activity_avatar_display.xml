@@ -35,27 +35,27 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:layout_marginTop="20dp" >
+    android:layout_marginTop="5dp" >
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="2dp"
         android:text="Nick Name"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#6600ff"
-        android:textSize="25sp" />
+       android:textSize="20sp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#6600ff"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
     
 </LinearLayout>
  
@@ -70,22 +70,22 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView4"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="2dp"
         android:text="Hobbies"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#6600ff"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="2dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#6600ff"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
 </LinearLayout>
 
 <LinearLayout
@@ -100,21 +100,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/textView2"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="2dp"
         android:text="Dream Job"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#6600ff"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
     <TextView
         android:id="@+id/textView7"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="2dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#6600ff"
-        android:textSize="25sp" />
+        android:textSize="20sp" />
  </LinearLayout>
  
  <LinearLayout
@@ -127,21 +127,21 @@
          android:id="@+id/textView8"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
-         android:layout_marginTop="20dp"
-         android:layout_marginLeft="10dp"
+         android:layout_marginTop="10dp"
+         android:layout_marginLeft="2dp"
          android:text="ShoutBucks"
          android:textAppearance="?android:attr/textAppearanceLarge"
          android:textColor="#ff3300"
-         android:textSize="25sp" />
+         android:textSize="20sp" />
      <TextView
         android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="2dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#6600ff"
-        android:textSize="25sp" />
+        android:textSize="20sp"/>
 </LinearLayout>
 
 <LinearLayout
@@ -153,9 +153,9 @@
         android:id="@+id/button1"
         android:layout_width="92dp"
         android:layout_height="34dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
         android:background="#5090EE90"
         android:onClick="onEditClick"
         android:text="Edit"
@@ -165,9 +165,9 @@
         android:id="@+id/button2"
         android:layout_width="92dp"
         android:layout_height="34dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="0.00"
         android:background="#5090EE90"
         android:onClick="onContinueClick"

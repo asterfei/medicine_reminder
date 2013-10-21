@@ -49,10 +49,12 @@ public class LoginActivity extends Activity {
 
 		EditText e1 = (EditText) findViewById(R.id.widget33);
 		username = e1.getText().toString();
+		username = username.trim();
 		Log.i("Info", username);
 
 		EditText e2 = (EditText) findViewById(R.id.widget35);
 		password = e2.getText().toString();
+		password = password.trim();
 		Log.i("Info", password);
 
 		if (username.equals("")) {
@@ -70,7 +72,9 @@ public class LoginActivity extends Activity {
 				List<ParseObject> results = query.find();
 				for (ParseObject user : results) {
 					String tempUser = user.getString("Username");
+					Log.i("tempUser", tempUser);
 					String tempPass = user.getString("Password");
+					Log.i("tempPass", tempPass);
 					if (tempPass.equals(password) && tempUser.equals(username)) {
 						flag = true;
 						data.userName = username;
@@ -118,6 +122,10 @@ public class LoginActivity extends Activity {
 						String tempUser2 = ava.getString("userName");
 						if (tempUser2.equals(username)) {
 							avatar.objectId = ava.getObjectId();
+							avatar.imageNum = ava.getInt("imageNum");
+							avatar.nickName = ava.getString("nickName");
+							avatar.hobby = ava.getString("hobby");
+							avatar.dreamJob = ava.getString("dreamJob");
 						}
 					}
 				} catch (ParseException e) {
@@ -137,7 +145,7 @@ public class LoginActivity extends Activity {
 				// } else {
 				// intent.setClass(LoginActivity.this, HomeScreen.class);
 				// }
-				intent.setClass(LoginActivity.this, MedicationActivity.class);
+				intent.setClass(LoginActivity.this, AvatarDisplay.class);
 				startActivity(intent);
 			}
 		}
