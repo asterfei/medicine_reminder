@@ -1,6 +1,7 @@
 package com.example.medicinereminder;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -34,9 +35,15 @@ public class AvatarEdit extends Activity {
 		EditText nickNameEdit = (EditText) findViewById(R.id.nameText);
 		EditText dreamJobEdit = (EditText) findViewById(R.id.jobtext);
 		EditText hobbyEdit = (EditText) findViewById(R.id.hobbytext);
-		avatar.hobby = hobbyEdit.getText().toString();
-		avatar.nickName = nickNameEdit.getText().toString();
-		avatar.dreamJob = dreamJobEdit.getText().toString();
+		avatar.hobby = hobbyEdit.getText().toString().trim();
+		avatar.nickName = nickNameEdit.getText().toString().trim();
+		avatar.dreamJob = dreamJobEdit.getText().toString().trim();
+		
+		if (avatar.hobby.equals("")||avatar.nickName.equals("")||avatar.dreamJob.equals("")) {
+			new AlertDialog.Builder(this).setTitle("Error")
+					.setMessage("You cannot leave any fields blank")
+					.setNeutralButton("close", null).show();
+		}
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Avatar");
 		query.getInBackground(avatar.objectId, new GetCallback<ParseObject>() {
