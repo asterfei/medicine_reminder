@@ -23,12 +23,12 @@
 
     <ImageView
         android:id="@+id/imageView1"
-        android:layout_width="118dp"
+        android:layout_width="131dp"
         android:layout_height="115dp"
         android:layout_gravity="center"
-        android:layout_marginTop="13dp"
-        android:layout_weight="0.36"
-         />
+        android:layout_marginTop="25dp"
+        android:layout_weight="0.23" />
+
     </LinearLayout>
 
 <LinearLayout
@@ -40,7 +40,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:layout_marginLeft="10dp"
         android:text="Nick Name"
         android:textAppearance="?android:attr/textAppearanceLarge"
@@ -52,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="25dp"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#548B54"
         android:textSize="20sp" />
@@ -157,7 +157,7 @@
         android:layout_height="34dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:background="#5090EE90"
         android:onClick="onEditClick"
         android:text="Edit"
@@ -169,7 +169,7 @@
         android:layout_height="34dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="115dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="40dp"
         android:layout_weight="0.00"
         android:background="#5090EE90"
         android:onClick="onContinueClick"
