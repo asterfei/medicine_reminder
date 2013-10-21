@@ -28,7 +28,7 @@
         android:layout_gravity="center"
         android:layout_marginTop="13dp"
         android:layout_weight="0.36"
-        android:src="@drawable/avatar1" />
+         />
     </LinearLayout>
 
 <LinearLayout

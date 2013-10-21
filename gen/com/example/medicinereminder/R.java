@@ -23,12 +23,21 @@ public final class R {
         public static final int avatar7=0x7f020006;
         public static final int avatar8=0x7f020007;
         public static final int avatar9=0x7f020008;
-        public static final int homescreen=0x7f020009;
-        public static final int ic_launcher=0x7f02000a;
-        public static final int not_taken=0x7f02000b;
-        public static final int pill_cam=0x7f02000c;
-        public static final int snooze=0x7f02000d;
-        public static final int took=0x7f02000e;
+        public static final int batman4=0x7f020009;
+        public static final int captain5=0x7f02000a;
+        public static final int cat6=0x7f02000b;
+        public static final int greenman7=0x7f02000c;
+        public static final int homescreen=0x7f02000d;
+        public static final int ic_launcher=0x7f02000e;
+        public static final int iron2=0x7f02000f;
+        public static final int loki9=0x7f020010;
+        public static final int not_taken=0x7f020011;
+        public static final int pill_cam=0x7f020012;
+        public static final int snooze=0x7f020013;
+        public static final int spider1=0x7f020014;
+        public static final int superman3=0x7f020015;
+        public static final int thor8=0x7f020016;
+        public static final int took=0x7f020017;
     }
     public static final class id {
         public static final int Button01=0x7f08000c;

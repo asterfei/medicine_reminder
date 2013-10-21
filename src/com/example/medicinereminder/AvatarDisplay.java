@@ -39,31 +39,31 @@ public class AvatarDisplay extends Activity{
 		imagenum = avatardata.imageNum;
 		if (imagenum == 1)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar1));
+					R.drawable.spider1));
 		else if (imagenum == 2)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar2));
+					R.drawable.iron2));
 		else if (imagenum == 3)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar3));
+					R.drawable.superman3));
 		else if (imagenum == 4)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar4));
+					R.drawable.batman4));
 		else if (imagenum == 5)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar5));
+					R.drawable.captain5));
 		else if (imagenum == 6)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar6));
+					R.drawable.cat6));
 		else if (imagenum == 7)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar7));
+					R.drawable.greenman7));
 		else if (imagenum == 8)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar8));
+					R.drawable.thor8));
 		else if (imagenum == 9)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar9));
+					R.drawable.loki9));
 	
 		nicknameinput = (TextView) findViewById(R.id.textView3);
 		nicknameinput.setText(":" + nickname);

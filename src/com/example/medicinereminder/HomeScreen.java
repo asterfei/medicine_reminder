@@ -39,31 +39,31 @@ public class HomeScreen extends Activity {
 		avatarnumber = data.avatarnumber;
 		if (avatarnumber == 1)
 			avatar.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar1));
+					R.drawable.spider1));
 		else if (avatarnumber == 2)
 			avatar.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar2));
+					R.drawable.iron2));
 		else if (avatarnumber == 3)
 			avatar.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar3));
+					R.drawable.superman3));
 		else if (avatarnumber == 4)
 			avatar.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar4));
+					R.drawable.batman4));
 		else if (avatarnumber == 5)
 			avatar.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar5));
+					R.drawable.captain5));
 		else if (avatarnumber == 6)
 			avatar.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar6));
+					R.drawable.cat6));
 		else if (avatarnumber == 7)
 			avatar.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar7));
+					R.drawable.greenman7));
 		else if (avatarnumber == 8)
 			avatar.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar8));
+					R.drawable.thor8));
 		else if (avatarnumber == 9)
 			avatar.setImageDrawable(getResources().getDrawable(
-					R.drawable.avatar9));
+					R.drawable.loki9));
 
 		appointment = (TextView) findViewById(R.id.textView6);
 		refill = (TextView) findViewById(R.id.textView7);

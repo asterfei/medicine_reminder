@@ -23,7 +23,7 @@
         android:maxWidth="200dp"
         android:onClick="onAvatarImage2ButtonClick"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar2" />
+        android:src="@drawable/iron2" />
 
     <ImageButton
         android:id="@+id/ImageButton03"
@@ -36,7 +36,7 @@
         android:maxWidth="200dp"
         android:onClick="onAvatarImage4ButtonClick"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar4" />
+        android:src="@drawable/batman4" />
 
     <ImageButton
         android:id="@+id/ImageButton06"
@@ -48,7 +48,7 @@
         android:maxWidth="200dp"
         android:onClick="onAvatarImage5ButtonClick"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar5" />
+        android:src="@drawable/captain5" />
 
     <ImageButton
         android:id="@+id/ImageButton05"
@@ -60,7 +60,7 @@
         android:maxWidth="200dp"
         android:onClick="onAvatarImage6ButtonClick"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar6" />
+        android:src="@drawable/cat6" />
 
     <ImageButton
         android:id="@+id/ImageButton04"
@@ -73,7 +73,7 @@
         android:maxWidth="200dp"
         android:onClick="onAvatarImage7ButtonClick"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar7" />
+        android:src="@drawable/greenman7" />
 
     <ImageButton
         android:id="@+id/ImageButton08"
@@ -85,7 +85,7 @@
         android:maxWidth="200dp"
         android:onClick="onAvatarImage8ButtonClick"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar8" />
+        android:src="@drawable/thor8" />
 
     <ImageButton
         android:id="@+id/ImageButton07"
@@ -97,17 +97,21 @@
         android:maxWidth="200dp"
         android:onClick="onAvatarImage9ButtonClick"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar9" />
+        android:src="@drawable/loki9" />
 
     <Button
         android:id="@+id/Button01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:layout_below="@+id/ImageButton04"
         android:layout_marginTop="16dp"
+        android:background="#669DdE80"
         android:onClick="onAvatarContinueButtonClick"
         android:text="Continue"
+        android:textSize="30sp"
+        android:textColor = "#90000000"
         android:width="500dp" />
 
     <ImageButton
@@ -121,7 +125,7 @@
         android:maxWidth="200dp"
         android:onClick="onAvatarImage1ButtonClick"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar1" />
+        android:src="@drawable/spider1" />
 
     <ImageButton
         android:id="@+id/ImageButton01"
@@ -133,6 +137,6 @@
         android:maxWidth="200dp"
         android:onClick="onAvatarImage3ButtonClick"
         android:scaleType="fitCenter"
-        android:src="@drawable/avatar3" />
+        android:src="@drawable/superman3" />
 
 </RelativeLayout>
