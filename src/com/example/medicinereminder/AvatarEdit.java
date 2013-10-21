@@ -56,16 +56,17 @@ public class AvatarEdit extends Activity {
 		ParseObject userLog = new ParseObject("UserLog");
 		userLog.put("UserName", data.userName);
 		userLog.put("From", "AvatarEdit");
-		userLog.put("To", "TakeOption");
+		userLog.put("To", "AvatarDisplay");
+		//userLog.put("To", "TakeOption");
 		userLog.saveInBackground();
 
-		Intent intent = new Intent();
-		intent.setClass(AvatarEdit.this, TakeOption.class);
-		startActivity(intent);
+		//Intent intent = new Intent();
+		//intent.setClass(AvatarEdit.this, TakeOption.class);
+		//startActivity(intent);
 
-		// Intent intent = new Intent();
-		// intent.setClass(AvatarEdit.this, AvatarDisplay.class);
-		// startActivity(intent);
+		 Intent intent = new Intent();
+		 intent.setClass(AvatarEdit.this, AvatarDisplay.class);
+		 startActivity(intent);
 
 	}
 
