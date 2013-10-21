@@ -2,6 +2,7 @@ package com.example.medicinereminder;
 
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import com.parse.GetCallback;
 import com.parse.ParseObject;
@@ -68,6 +69,22 @@ public class MedicationActivity extends Activity {
 		medicationTime2.setMinutes(d2.getCurrentMinute());
 		Log.i("Info", medicationTime2.toString());
 		data.medicationTime2 = medicationTime2;
+
+		if (data.objectId.trim().equals("")) {
+			ParseQuery<ParseObject> query2 = ParseQuery.getQuery("UserInfo");
+			try {
+				List<ParseObject> results2 = query2.find();
+				for (ParseObject user : results2) {
+					String tempUser = user.getString("Username");
+					if (tempUser.equals(data.userName)) {
+						Log.i("Info3", user.getObjectId());
+						data.objectId = user.getObjectId();
+					}
+				}
+			} catch (ParseException e) {
+				Log.i("Info", "Error: " + e.getMessage());
+			}
+		}
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("UserInfo");
 		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {

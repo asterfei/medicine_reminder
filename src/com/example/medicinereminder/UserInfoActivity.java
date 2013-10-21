@@ -153,21 +153,8 @@ public class UserInfoActivity extends Activity {
 				userInfo.put("takenCount", 0);
 				userInfo.put("buck", 0);
 				userInfo.saveInBackground();
-
-				ParseQuery<ParseObject> query2 = ParseQuery
-						.getQuery("UserInfo");
-				query2.selectKeys(Arrays.asList("Username"));
-				try {
-					List<ParseObject> results = query2.find();
-					for (ParseObject user : results) {
-						String tempUser = user.getString("Username");
-						if (tempUser.equals(username)) {
-							data.objectId = userInfo.getObjectId();
-						}
-					}
-				} catch (ParseException e) {
-					Log.i("Info", "Error: " + e.getMessage());
-				}
+				Log.i("I1", userInfo.getString("Username"));
+			
 
 				ParseObject newAvatar = new ParseObject("Avatar");
 				newAvatar.put("userName", username);
@@ -176,8 +163,8 @@ public class UserInfoActivity extends Activity {
 
 				ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Avatar");
 				try {
-					List<ParseObject> results = query3.find();
-					for (ParseObject ava : results) {
+					List<ParseObject> results3 = query3.find();
+					for (ParseObject ava : results3) {
 						String tempUser2 = ava.getString("userName");
 						if (tempUser2.equals(username)) {
 							avatar.objectId = ava.getObjectId();
@@ -187,6 +174,21 @@ public class UserInfoActivity extends Activity {
 					Log.i("Info", "Error: " + e.getMessage());
 				}
 
+				ParseQuery<ParseObject> query2 = ParseQuery
+						.getQuery("UserInfo");
+				try {
+					List<ParseObject> results2 = query2.find();
+					for (ParseObject user : results2) {
+						String tempUser = user.getString("Username");
+						if (tempUser.equals(username)) {
+							Log.i("Info3", user.getObjectId());
+							data.objectId = user.getObjectId();
+						}
+					}
+				} catch (ParseException e) {
+					Log.i("Info", "Error: " + e.getMessage());
+				}
+				
 				ParseObject userLog = new ParseObject("UserLog");
 				userLog.put("UserName", data.userName);
 				userLog.put("From", "UserInfoActivity");

@@ -1,5 +1,7 @@
 package com.example.medicinereminder;
 
+import java.util.List;
+
 import com.parse.GetCallback;
 import com.parse.ParseException;
 import com.parse.ParseObject;
@@ -11,6 +13,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 
@@ -18,7 +21,8 @@ public class Avatar extends Activity {
 	public static final int Tutorial_ID = 1;
 	private int imagenumber = 0;
 	private Database data = Database.getInstance();
-	private AvatarInformation avatarInformation = AvatarInformation.getInstance();
+	private AvatarInformation avatarInformation = AvatarInformation
+			.getInstance();
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -75,17 +79,31 @@ public class Avatar extends Activity {
 					.setMessage("Please select an avatar")
 					.setNeutralButton("close", null).show();
 		} else {
+			if (avatarInformation.objectId.trim().equals("")) {
+				ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Avatar");
+				try {
+					List<ParseObject> results3 = query3.find();
+					for (ParseObject ava : results3) {
+						String tempUser2 = ava.getString("userName");
+						if (tempUser2.equals(data.userName)) {
+							avatarInformation.objectId = ava.getObjectId();
+						}
+					}
+				} catch (ParseException e) {
+					Log.i("Info", "Error: " + e.getMessage());
+				}
+			}
 			avatarInformation.imageNum = imagenumber;
 			avatarInformation.userName = data.userName;
 			Intent intent = new Intent();
 			intent.setClass(Avatar.this, AvatarEdit.class);
-			
+
 			ParseObject userLog = new ParseObject("UserLog");
 			userLog.put("UserName", data.userName);
 			userLog.put("From", "Avatar");
 			userLog.put("To", "AvatarEdit");
 			userLog.saveInBackground();
-			
+
 			startActivity(intent);
 		}
 
