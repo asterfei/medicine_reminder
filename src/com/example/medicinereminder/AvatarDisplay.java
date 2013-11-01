@@ -64,6 +64,9 @@ public class AvatarDisplay extends Activity{
 		else if (imagenum == 9)
 			avatarinput.setImageDrawable(getResources().getDrawable(
 					R.drawable.loki9));
+		else if (imagenum == 10)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_1));
 	
 		nicknameinput = (TextView) findViewById(R.id.textView3);
 		nicknameinput.setText(": " + nickname);
@@ -73,6 +76,12 @@ public class AvatarDisplay extends Activity{
 		dreamjobinput.setText(": " + dreamjob);
 		ShoutBucksinput = (TextView) findViewById(R.id.textView9);
 		ShoutBucksinput.setText(": "+ shoutbuck);
+	}
+	
+	public void onAvatarImageButtonClick(View view) {
+		Intent intent = new Intent();
+		intent.setClass(AvatarDisplay.this, Avatar.class);
+		startActivity(intent);
 	}
 
 	@Override
