@@ -20,7 +20,7 @@ public class AvatarInformationEdit extends Activity {
 
 	private AvatarInformation avatar = AvatarInformation.getInstance();
 	private Database data = Database.getInstance();
-	
+
 	private String nickName = avatar.nickName;
 	private String hobby = avatar.hobby;
 	private String dreamJob = avatar.dreamJob;
@@ -40,7 +40,7 @@ public class AvatarInformationEdit extends Activity {
 
 		TextView textView3 = (TextView) findViewById(R.id.edit_jobtext);
 		textView3.setText(avatar.dreamJob);
-		
+
 		ImageView avatarinput = (ImageView) findViewById(R.id.personal_image);
 		imagenum = avatar.imageNum;
 		if (imagenum == 1)
@@ -85,9 +85,9 @@ public class AvatarInformationEdit extends Activity {
 		EditText e3 = (EditText) findViewById(R.id.edit_jobtext);
 		dreamJob = e3.getText().toString().trim();
 		Log.i("dreamJob", dreamJob);
-		
+
 		setAvatar();
-		
+
 		NextActivity();
 
 	}
@@ -95,7 +95,7 @@ public class AvatarInformationEdit extends Activity {
 	public void onReturnClick(View view) {
 		NextActivity();
 	}
-	
+
 	public void setAvatar() {
 		if (avatar.objectId.trim().equals("")) {
 			ParseQuery<ParseObject> query = ParseQuery.getQuery("Avatars");
@@ -110,15 +110,15 @@ public class AvatarInformationEdit extends Activity {
 				Log.i("Error", e.getMessage());
 			}
 		}
-		
+
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Avatars");
 		query.getInBackground(avatar.objectId, new GetCallback<ParseObject>() {
 			public void done(ParseObject object, ParseException e) {
 				Log.i("objectId", avatar.objectId);
 				if (e == null) {
-					object.put("nickName", avatar.nickName);
-					object.put("hobby", avatar.hobby);
-					object.put("dreamJob", avatar.dreamJob);
+					object.put("nickName", nickName);
+					object.put("hobby", hobby);
+					object.put("dreamJob", dreamJob);
 					object.saveInBackground();
 				} else {
 					Log.i("Error", e.getMessage());
