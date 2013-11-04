@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+
+    <EditText
+        android:id="@+id/refill"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Next Refill Time"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:editable="false"
+    	android:cursorVisible="false" />
+    
+    
+    <Button
+        android:id="@+id/refill_pick1"
+        android:layout_width="60dp"
+        android:layout_height="42dp"
+        android:layout_alignRight="@+id/refill"
+        android:layout_alignTop="@+id/refill"
+        android:background="@drawable/btn_style_white"
+        android:onClick="login_mainweixin"
+        android:text="Pick"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/refill_return_btn"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/refill"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="31dp"
+        android:background="@drawable/btn_style_white"
+        android:onClick="onReturnClick"
+        android:text="Return"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/refill_submit_btn"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/refill_pick1"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="30dp"
+        android:background="@drawable/btn_style_green"
+        android:onClick="onSubmitClick"
+        android:text="Submit"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

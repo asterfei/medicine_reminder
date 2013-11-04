@@ -1,20 +1,19 @@
 package com.example.medicinereminder;
 
+import com.parse.ParseObject;
+
 import android.annotation.SuppressLint;
 import android.app.*;
 import android.content.*;
 import android.widget.Toast;
-import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.view.WindowManager.LayoutParams;
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
 
 public class Mote extends BroadcastReceiver {
-
+	
+	private Database data = Database.getInstance();
+	
+	@SuppressWarnings("deprecation")
 	@SuppressLint("NewApi")
 	public void onReceive(Context context, Intent intent) {
-		Database db = Database.getInstance();
 		Toast.makeText(context, "Alarm worked.", Toast.LENGTH_LONG).show();
 		int icon = R.drawable.avatar1;
 		// CharSequence tickerText = "Time to take your medication!";
@@ -29,10 +28,16 @@ public class Mote extends BroadcastReceiver {
 		NotificationManager notofManager = (NotificationManager) context
 				.getSystemService(Context.NOTIFICATION_SERVICE);
 
-		Intent notificationIntent = new Intent(context, TakeOption.class);
+		ParseObject userLog = new ParseObject("Logs");
+		userLog.put("userName", data.userName);
+		userLog.put("from", "Mote");
+		userLog.put("to", "MainActivity");
+		userLog.saveInBackground();
+		
+		Intent notificationIntent = new Intent(context, MainActivity.class);
 		PendingIntent contentIntent = PendingIntent.getActivity(context, 0,
 				notificationIntent, 0);
-		@SuppressWarnings("deprecation")
+		
 		Notification notification = new Notification(icon, tickerText, when);
 
 		notification.setLatestEventInfo(context, contentTitle, contentText,

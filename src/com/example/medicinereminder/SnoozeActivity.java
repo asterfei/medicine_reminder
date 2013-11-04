@@ -10,11 +10,9 @@ import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class SnoozeActivity extends Activity {
 
@@ -35,6 +33,7 @@ public class SnoozeActivity extends Activity {
 		return true;
 	}
 
+	@SuppressWarnings("deprecation")
 	public void onRMContinueButtonClick(View view) {
 		EditText time = (EditText) findViewById(R.id.editText2);
 		try {
@@ -67,13 +66,13 @@ public class SnoozeActivity extends Activity {
 		alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
 				pendingIntent);
 
-		ParseObject userLog = new ParseObject("UserLog");
-		userLog.put("UserName", data.userName);
-		userLog.put("From", "SnoozeActivity");
-		userLog.put("To", "TakeOption");
+		ParseObject userLog = new ParseObject("Logs");
+		userLog.put("userName", data.userName);
+		userLog.put("from", "SnoozeActivity");
+		userLog.put("to", "MainActivity");
 		userLog.saveInBackground();
 
-		Intent i = new Intent(this, TakeOption.class);
+		Intent i = new Intent(this, MainActivity.class);
 		startActivityForResult(i, TakeOption_ID);
 	}
 

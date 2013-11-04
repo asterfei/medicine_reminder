@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+
+    <EditText
+        android:id="@+id/add_appointment"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Next Appointment Time"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:editable="false"
+    	android:cursorVisible="false" />
+    
+    
+    <Button
+        android:id="@+id/add_appointment_pick1"
+        android:layout_width="60dp"
+        android:layout_height="42dp"
+        android:layout_alignRight="@+id/add_appointment"
+        android:layout_alignTop="@+id/add_appointment"
+        android:background="@drawable/btn_style_white"
+        android:text="Pick"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/add_appointment_submit_btn"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/btn_style_green"
+        android:onClick="onContinueClick"
+        android:text="Continue"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

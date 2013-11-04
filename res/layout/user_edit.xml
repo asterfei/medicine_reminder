@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+        
+     <EditText
+         android:id="@+id/firstname"
+         android:layout_width="fill_parent"
+         android:layout_height="wrap_content"
+         android:layout_marginLeft="20dp"
+         android:layout_marginRight="20dp"
+         android:layout_marginTop="50dp"
+         android:background="@drawable/login_editbox"
+         android:hint="First Name"
+         android:singleLine="true"
+         android:textColor="#000"
+         android:textSize="15sp" />
+     
+    <EditText
+        android:id="@+id/lastname"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/firstname"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Last Name"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+     
+    <EditText
+        android:id="@+id/date"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lastname"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Date of Diagnosis(mm/dd/yyyy)"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+      
+    <EditText
+        android:id="@+id/phone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/date"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Phone Number"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+    
+    <EditText
+        android:id="@+id/docphone"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/phone"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Provider's Phone Number"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/login_login_btn"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/Button01"
+        android:layout_alignBottom="@+id/Button01"
+        android:layout_alignRight="@+id/docphone"
+        android:layout_marginRight="24dp"
+        android:background="@drawable/btn_style_green"
+        android:onClick="onSubmitClick"
+        android:text="Submit"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/docphone"
+        android:layout_below="@+id/docphone"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/btn_style_white"
+        android:onClick="onReturnClick"
+        android:text="Return"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

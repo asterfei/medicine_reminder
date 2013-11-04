@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+    <EditText
+        android:id="@+id/med1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Medicine 1"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+    
+    <EditText
+        android:id="@+id/med1_time"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/med1"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Taken Time for Medicine 1"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:editable="false"
+    	android:cursorVisible="false" />
+    
+    <EditText
+        android:id="@+id/med2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/med1_time"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Medication 2"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+    
+    <EditText
+        android:id="@+id/med2_time"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/med2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Taken Time for Medicine 2"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp"
+        android:editable="false"
+    	android:cursorVisible="false" />
+    
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/med2_time"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Alarm Message"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+    
+    <EditText
+        android:id="@+id/minute"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/message"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="15dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Minutes Before Reminder Alarm"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/pick1"
+        android:layout_width="60dp"
+        android:layout_height="42dp"
+        android:layout_alignRight="@+id/med1_time"
+        android:layout_alignTop="@+id/med1_time"
+        android:background="@drawable/btn_style_white"
+        android:onClick="login_mainweixin"
+        android:text="Pick"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/pick2"
+        android:layout_width="60dp"
+        android:layout_height="42dp"
+        android:layout_alignRight="@+id/med2_time"
+        android:layout_alignTop="@+id/med2_time"
+        android:background="@drawable/btn_style_white"
+        android:onClick="login_mainweixin"
+        android:text="Pick"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/medication_submit_btn"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/medication_return_btn"
+        android:layout_alignBottom="@+id/medication_return_btn"
+        android:layout_alignRight="@+id/pick2"
+        android:layout_marginRight="22dp"
+        android:background="@drawable/btn_style_green"
+        android:onClick="onSubmitClick"
+        android:text="Submit"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/medication_return_btn"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignLeft="@+id/minute"
+        android:layout_below="@+id/minute"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="21dp"
+        android:background="@drawable/btn_style_white"
+        android:onClick="onReturnClick"
+        android:text="Return"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>

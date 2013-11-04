@@ -3,19 +3,12 @@ package com.example.medicinereminder;
 import com.parse.ParseObject;
 
 import android.app.Activity;
-import android.app.PendingIntent;
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.view.Menu;
 
 public class AlarmActivity extends Activity {
 	// AlarmSet alarmSet;
@@ -57,13 +50,13 @@ public class AlarmActivity extends Activity {
 	}
 
 	public void onOpenButtonClick(View view) {
-		ParseObject userLog = new ParseObject("UserLog");
-		userLog.put("UserName", data.userName);
-		userLog.put("From", "AlarmActivity");
-		userLog.put("To", "TakeOption");
+		ParseObject userLog = new ParseObject("Logs");
+		userLog.put("userName", data.userName);
+		userLog.put("from", "AlarmActivity");
+		userLog.put("to", "MainActivity");
 		userLog.saveInBackground();
 		
-		Intent i = new Intent(this, TakeOption.class);
+		Intent i = new Intent(this, MainActivity.class);
 		startActivityForResult(i, TakeOption_ID);
 
 	}

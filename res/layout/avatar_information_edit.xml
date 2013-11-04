@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical" >
+
+   <ImageView
+        android:id="@+id/personal_image"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/thor8"/>
+        
+    <EditText
+        android:id="@+id/edit_nameText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="140dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Nickname"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/edit_hobbytext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_nameText"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Dream Hobby"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+
+    <EditText
+        android:id="@+id/edit_jobtext"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_hobbytext"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/login_editbox"
+        android:hint="Dream Job"
+        android:singleLine="true"
+        android:textColor="#000"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/info_edit_submit_btn"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignRight="@+id/edit_jobtext"
+        android:layout_below="@+id/edit_jobtext"
+        android:layout_marginRight="21dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/btn_style_green"
+        android:onClick="onSubmitClick"
+        android:text="Submit"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/info_edit_return_btn"
+        android:layout_width="90dp"
+        android:layout_height="40dp"
+        android:layout_alignBaseline="@+id/info_edit_submit_btn"
+        android:layout_alignBottom="@+id/info_edit_submit_btn"
+        android:layout_alignLeft="@+id/edit_jobtext"
+        android:layout_marginLeft="28dp"
+        android:background="@drawable/btn_style_white"
+        android:onClick="onReturnClick"
+        android:text="Return"
+        android:textColor="#ffffff"
+        android:textSize="18sp" />
+
+</RelativeLayout>
