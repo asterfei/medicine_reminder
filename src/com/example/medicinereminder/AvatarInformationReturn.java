@@ -28,9 +28,9 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+public class AvatarInformationReturn extends Activity {
 
-	public static MainActivity instance = null;
+	public static AvatarInformationReturn instance = null;
 
 	private Database data = Database.getInstance();
 
@@ -70,9 +70,9 @@ public class MainActivity extends Activity {
 		one = displayWidth / 3 + 5;
 		two = one * 2 - 2;
 		LayoutInflater mLi = LayoutInflater.from(this);
-		View view1 = mLi.inflate(R.layout.main_tab_home, null);
+		View view3 = mLi.inflate(R.layout.main_tab_home, null);
 		View view2 = mLi.inflate(R.layout.main_tab_medication, null);
-		View view3 = mLi.inflate(R.layout.main_tab_setting, null);
+		View view1 = mLi.inflate(R.layout.main_tab_setting, null);
 
 		final ArrayList<View> views = new ArrayList<View>();
 		views.add(view1);
@@ -181,32 +181,32 @@ public class MainActivity extends Activity {
 	}
 
 	public void EditMedication(View v) {
-		Intent intent = new Intent(MainActivity.this, MedicationEdit.class);
+		Intent intent = new Intent(AvatarInformationReturn.this, MedicationEdit.class);
 		startActivity(intent);
 	}
 
 	public void EditAppointment(View v) {
-		Intent intent = new Intent(MainActivity.this, AppointmentEdit.class);
+		Intent intent = new Intent(AvatarInformationReturn.this, AppointmentEdit.class);
 		startActivity(intent);
 	}
 
 	public void EditRefill(View v) {
-		Intent intent = new Intent(MainActivity.this, RefillEdit.class);
+		Intent intent = new Intent(AvatarInformationReturn.this, RefillEdit.class);
 		startActivity(intent);
 	}
 
 	public void EditPersonal(View v) {
-		Intent intent = new Intent(MainActivity.this, UserEdit.class);
+		Intent intent = new Intent(AvatarInformationReturn.this, UserEdit.class);
 		startActivity(intent);
 	}
 
 	public void EditAvatarImage(View v) {
-		Intent intent = new Intent(MainActivity.this, AvatarImageEdit.class);
+		Intent intent = new Intent(AvatarInformationReturn.this, AvatarImageEdit.class);
 		startActivity(intent);
 	}
 
 	public void EditAvatarInformation(View v) {
-		Intent intent = new Intent(MainActivity.this,
+		Intent intent = new Intent(AvatarInformationReturn.this,
 				AvatarInformationEdit.class);
 		startActivity(intent);
 	}
@@ -303,19 +303,19 @@ public class MainActivity extends Activity {
 	public void onAlarmButtonClick(View view) {
 		ParseObject userLog = new ParseObject("Logs");
 		userLog.put("userName", data.userName);
-		userLog.put("from", "MainActivity");
+		userLog.put("from", "AvatarInformationReturn");
 		userLog.put("to", "SnoozeActivity");
 		userLog.saveInBackground();
 
 		Intent intent = new Intent();
-		intent.setClass(MainActivity.this, SnoozeActivity.class);
+		intent.setClass(AvatarInformationReturn.this, SnoozeActivity.class);
 		startActivity(intent);
 	}
 
 	public void onPillCamButtonClick(View view) {
 		ParseObject userLog = new ParseObject("Logs");
 		userLog.put("userName", data.userName);
-		userLog.put("from", "MainActivity");
+		userLog.put("from", "AvatarInformationReturn");
 		userLog.put("to", "TakePillPictureActivity");
 		userLog.saveInBackground();
 

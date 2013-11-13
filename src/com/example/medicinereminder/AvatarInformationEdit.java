@@ -57,10 +57,10 @@ public class AvatarInformationEdit extends Activity {
 					R.drawable.batman4));
 		else if (imagenum == 5)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.captain5));
+					R.drawable.cat6));
 		else if (imagenum == 6)
 			avatarinput.setImageDrawable(getResources().getDrawable(
-					R.drawable.cat6));
+					R.drawable.captain5));
 		else if (imagenum == 7)
 			avatarinput.setImageDrawable(getResources().getDrawable(
 					R.drawable.greenman7));
@@ -70,6 +70,61 @@ public class AvatarInformationEdit extends Activity {
 		else if (imagenum == 9)
 			avatarinput.setImageDrawable(getResources().getDrawable(
 					R.drawable.loki9));
+		else if (imagenum == 10)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.worldcup_1));
+		else if (imagenum == 11)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.worldcup_2));
+		else if (imagenum == 12)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.worldcup_3));
+		else if (imagenum == 13)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.worldcup_4));
+		else if (imagenum == 14)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.worldcup_5));
+		else if (imagenum == 15)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.worldcup_6));
+		else if (imagenum == 16)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.worldcup_7));
+		else if (imagenum == 17)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.worldcup_8));
+		else if (imagenum == 18)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.worldcup_9));
+		else if (imagenum == 19)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_1));
+		else if (imagenum == 20)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_2));
+		else if (imagenum == 21)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_3));
+		else if (imagenum == 22)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_4));
+		else if (imagenum == 23)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_5));
+		else if (imagenum == 24)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_6));
+		else if (imagenum == 25)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_7));
+		else if (imagenum == 26)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_8));
+		else if (imagenum == 27)
+			avatarinput.setImageDrawable(getResources().getDrawable(
+					R.drawable.ali_9));
+
 
 	}
 

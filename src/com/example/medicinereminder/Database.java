@@ -11,6 +11,7 @@ public class Database {
 	protected String userName = "";
 	protected String firstName = "";
 	protected String lastName = "";
+	//protected int avatarnumber = 0;
 	protected String dateOfDiagnosis = "";
 	protected String phone = "";
 	protected String providerPhone = "";
