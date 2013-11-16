@@ -13,6 +13,8 @@ public class AvatarInformation {
 	protected String dreamJob;
 	protected String hobby;
 	protected ArrayList<String> crewMember;
+	protected String mystore;
+	
 
 	public static AvatarInformation getInstance() {
 		if (singletonInstance == null)

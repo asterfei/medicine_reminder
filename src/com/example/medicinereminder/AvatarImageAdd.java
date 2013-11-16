@@ -8,6 +8,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import android.os.Bundle;
 import android.R.integer;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -25,30 +26,18 @@ public class AvatarImageAdd extends Activity {
 
 	private int imagenumber = 0;
 	final static int totalImages = 27;
-	private int[] prices = new int[totalImages];
-	private int takenCount = 0;
 	private Database data = Database.getInstance();
-	private AvatarInformation avatar = AvatarInformation
-			.getInstance();
+	private AvatarInformation avatar = AvatarInformation.getInstance();
 	int index;
-
-
+	StringBuffer mypicstore = new StringBuffer();
+	private int[] avatarprice = new int [totalImages];
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.avatar_image_add);
-		
-		takenCount= data.takenCount;
-		for (index = 0; index < totalImages; index++) {
-			ParseQuery<ParseObject> query = ParseQuery.getQuery("AvatarShop");
-			query.whereEqualTo("imageNum", index+1);
-			try {
-				ParseObject result = query.find().get(0);
-				prices[index]= result.getInt("price"); 
-			} catch (ParseException e) {
-				Log.i("Info", "Error: " + e.getMessage());
-			}
-		}
+		for (int index = 0; index < totalImages; index ++ )
+			avatarprice[index] = data.avatarprices[index];
 		
 		TextView block1 = (TextView) findViewById(R.id.textViewlevel0);
 		block1.setText("unlocked");
@@ -61,7 +50,8 @@ public class AvatarImageAdd extends Activity {
 		TextView block3 = (TextView) findViewById(R.id.textViewlevel2);
 		block3.setText("locked");
 		block3.setTextColor(0xffff0000);		
-		setPrice();		
+		setPrice();
+		setcolor();
 	}
 
 public void setPrice() {
@@ -96,10 +86,45 @@ public void setPrice() {
 		price[26]=(TextView) findViewById(R.id.textView27);
 		
 		for (int i = 0; i<27; i++){
-			price[i].setText("Price:"+ prices[i] + "SBs");
+			price[i].setText("Price:"+ avatarprice[i] + "SBs");
 			}					
 	}
-	
+
+    @SuppressLint("NewApi")
+	public void setcolor() {
+    	ImageButton[] B = new ImageButton[27];
+    	B[0]=(ImageButton)findViewById(R.id.ImageButton01);
+    	B[1]=(ImageButton)findViewById(R.id.ImageButton02);
+    	B[2]=(ImageButton)findViewById(R.id.ImageButton03);
+    	B[3]=(ImageButton)findViewById(R.id.ImageButton04);
+    	B[4]=(ImageButton)findViewById(R.id.ImageButton05);
+    	B[5]=(ImageButton)findViewById(R.id.ImageButton06);
+    	B[6]=(ImageButton)findViewById(R.id.ImageButton07);
+    	B[7]=(ImageButton)findViewById(R.id.ImageButton08);
+    	B[8]=(ImageButton)findViewById(R.id.ImageButton09);
+    	B[9]=(ImageButton)findViewById(R.id.ImageButton10);
+    	B[10]=(ImageButton)findViewById(R.id.ImageButton11);
+    	B[11]=(ImageButton)findViewById(R.id.ImageButton12);
+    	B[12]=(ImageButton)findViewById(R.id.ImageButton13);
+    	B[13]=(ImageButton)findViewById(R.id.ImageButton14);
+    	B[14]=(ImageButton)findViewById(R.id.ImageButton15);
+    	B[15]=(ImageButton)findViewById(R.id.ImageButton16);
+    	B[16]=(ImageButton)findViewById(R.id.ImageButton17);
+    	B[17]=(ImageButton)findViewById(R.id.ImageButton18);
+    	B[18]=(ImageButton)findViewById(R.id.ImageButton19);
+    	B[19]=(ImageButton)findViewById(R.id.ImageButton20);
+    	B[20]=(ImageButton)findViewById(R.id.ImageButton21);
+    	B[21]=(ImageButton)findViewById(R.id.ImageButton22);
+    	B[22]=(ImageButton)findViewById(R.id.ImageButton23);
+    	B[23]=(ImageButton)findViewById(R.id.ImageButton24);
+    	B[24]=(ImageButton)findViewById(R.id.ImageButton25);
+    	B[25]=(ImageButton)findViewById(R.id.ImageButton26);
+    	B[26]=(ImageButton)findViewById(R.id.ImageButton27);
+    	
+    	for (int i = 9; i< 27; i++)
+    		B[i].setImageAlpha(100);
+    }
+
 	public void AlertDialog1() {
 		new AlertDialog.Builder(this)
 				.setTitle("Error")
@@ -140,67 +165,47 @@ public void setPrice() {
 						}).setPositiveButton("cancel", null).show();
 	}
 
-	public void onAvatarImage1ButtonClick(View view) {
-		if (prices[0] > 0)
+	public void AlertDialog_level0(final int number){
+		if (avatarprice[number] > 0)
 			AlertDialog4();
 		else
-			AlertDialog5(1);
+			AlertDialog5(number+1);
+	}
+	
+	public void onAvatarImage1ButtonClick(View view) {
+		AlertDialog_level0(0);
 	}
 
 	public void onAvatarImage2ButtonClick(View view) {
-		if (prices[1] > 0)
-			AlertDialog4();
-		else
-			AlertDialog5(2);
+		AlertDialog_level0(1);
 	}
 
 	public void onAvatarImage3ButtonClick(View view) {
-		if (prices[2] > 0)
-			AlertDialog4();
-		else
-			AlertDialog5(3);
+		AlertDialog_level0(2);
 	}
 
 	public void onAvatarImage4ButtonClick(View view) {
-		if (prices[3] > 0)
-			AlertDialog4();
-		else
-			AlertDialog5(4);
+		AlertDialog_level0(3);
 	}
 
 	public void onAvatarImage5ButtonClick(View view) {
-		if (prices[4] > 0)
-			AlertDialog4();
-		else
-			AlertDialog5(5);
+		AlertDialog_level0(4);
 	}
 
 	public void onAvatarImage6ButtonClick(View view) {
-		if (prices[5] > 0)
-			AlertDialog4();
-		else
-			AlertDialog5(6);
+		AlertDialog_level0(5);
 	}
 
 	public void onAvatarImage7ButtonClick(View view) {
-		if (prices[6] > 0)
-			AlertDialog4();
-		else
-			AlertDialog5(7);
+		AlertDialog_level0(6);
 	}
 
 	public void onAvatarImage8ButtonClick(View view) {
-		if (prices[7] > 0)
-			AlertDialog4();
-		else
-			AlertDialog5(8);
+		AlertDialog_level0(7);
 	}
 
 	public void onAvatarImage9ButtonClick(View view) {
-		if (prices[8] > 0)
-			AlertDialog4();
-		else
-			AlertDialog5(9);
+		AlertDialog_level0(8);
 	}
 
 	public void onAvatarImage10ButtonClick(View view) {
@@ -298,13 +303,19 @@ public void setPrice() {
 				}
 			}
 			avatar.imageNum = imagenumber;
-			avatar.userName = data.userName;
+			avatar.userName = data.userName;			
+			avatar.mystore = "000000000000000000000000000";
+			mypicstore.append(avatar.mystore.substring(0, imagenumber-1));
+			mypicstore.append("1");
+			mypicstore.append(avatar.mystore.substring(imagenumber,27));
+			avatar.mystore = mypicstore.toString();
 			
 			ParseQuery<ParseObject> query = ParseQuery.getQuery("Avatars");
 			query.getInBackground(avatar.objectId, new GetCallback<ParseObject>() {
 				public void done(ParseObject object, ParseException e) {
 					if (e == null) {
 						object.put("imageNum", avatar.imageNum);
+						object.put("mystore", avatar.mystore);
 						object.saveInBackground();
 					} else {
 
@@ -337,5 +348,4 @@ public void setPrice() {
 		intent.setClass(AvatarImageAdd.this, AvatarInformationAdd.class);
 		startActivity(intent);
 	}
-
 }

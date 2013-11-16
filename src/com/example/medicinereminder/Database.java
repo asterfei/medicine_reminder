@@ -27,6 +27,8 @@ public class Database {
 	protected int snoozeTime = 0;
 	protected int notTakenCount = 0;
 	protected int takenCount = 0;
+	protected int[] avatarprices = new int[] { 0, 2, 0, 0, 3, 1, 6, 0, 0, 5,
+			8, 6, 5, 4, 5, 9, 6, 4, 10, 11, 9, 2, 3, 6, 8, 6, 5 };
 
 	private Database() {
 

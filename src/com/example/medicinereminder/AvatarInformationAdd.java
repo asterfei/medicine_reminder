@@ -3,6 +3,8 @@ package com.example.medicinereminder;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -25,6 +27,20 @@ public class AvatarInformationAdd extends Activity {
 		setContentView(R.layout.avatar_information_add);
 	}
 
+	public void AlertDialog6() {
+		new AlertDialog.Builder(this)
+				.setTitle("Congratulations")
+				.setMessage("You Have Finished Your Registration")
+				.setNegativeButton("continue",
+						new DialogInterface.OnClickListener() {
+							public void onClick(
+									DialogInterface dialoginterface, int k) {
+								NextActivity();
+							}
+						}).show();
+	}
+
+	
 	public void onFinishClick(View view) {
 		EditText nickNameEdit = (EditText) findViewById(R.id.nameText);
 		EditText dreamJobEdit = (EditText) findViewById(R.id.jobtext);
@@ -35,7 +51,8 @@ public class AvatarInformationAdd extends Activity {
 		avatar.dreamJob = dreamJobEdit.getText().toString().trim();
 
 		setAvatar();
-		NextActivity();
+		AlertDialog6();
+		//NextActivity();
 
 	}
 
@@ -75,11 +92,12 @@ public class AvatarInformationAdd extends Activity {
 		ParseObject userLog = new ParseObject("Logs");
 		userLog.put("userName", data.userName);
 		userLog.put("from", "AvatarInformationAdd");
-		userLog.put("to", "MainActivity");
+		userLog.put("to", "AvatarInformationDisplayRegistration");
 		userLog.saveInBackground();
 
 		Intent intent = new Intent();
-		intent.setClass(AvatarInformationAdd.this, MainActivity.class);
+		intent.setClass(AvatarInformationAdd.this, AvatarInformationDisplayRegistration.class);
+		//intent.setClass(AvatarInformationAdd.this, MainActivity.class);
 		startActivity(intent);
 	}
 

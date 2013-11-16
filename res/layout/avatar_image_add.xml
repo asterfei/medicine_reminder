@@ -680,6 +680,7 @@
                 android:layout_below="@+id/textView25"
                 android:layout_centerHorizontal="true"
                 android:layout_marginBottom="19dp"
+                android:layout_marginTop="30dp"
                 android:background="@drawable/btn_style_green"
                 android:onClick="onAvatarContinueButtonClick"
                 android:text="Continue"

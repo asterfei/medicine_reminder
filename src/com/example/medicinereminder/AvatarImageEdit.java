@@ -8,6 +8,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import android.os.Bundle;
 import android.R.integer;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -15,40 +16,74 @@ import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class AvatarImageEdit extends Activity {
 
 	private AvatarInformation avatar = AvatarInformation.getInstance();
 	private Database data = Database.getInstance();
-	private int imagenumber = avatar.imageNum;
+	private int imagenumber;
 	
 	final static int totalImages = 27;
-	private int[] prices = new int[totalImages];
-	private int takenCount = 0;
+	private int takenCount;
 	int index;
+	StringBuffer mypicstore = new StringBuffer();
+	String mypic;
+	private char ch;
+	private int[] avatarprice = new int [totalImages];
+	private int shoutbuck;
+	private String firstName;
+	private String lastName;
+	private String nickName ;
+	private String hobby ;
+	private String dreamJob ;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.avatar_image_edit);
-		takenCount= data.takenCount;
-		for (index = 0; index < totalImages; index++) {
-			ParseQuery<ParseObject> query = ParseQuery.getQuery("AvatarShop");
-			query.whereEqualTo("imageNum", index+1);
+		for (int index = 0; index < totalImages; index ++ )
+			avatarprice[index] = data.avatarprices[index];
+		
+			ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Avatars");
+			query2.whereEqualTo("userName", data.userName);
 			try {
-				ParseObject result = query.find().get(0);
-				prices[index]= result.getInt("price"); 
+				ParseObject result = query2.find().get(0);
+				mypic= result.getString("mystore");
+				imagenumber = result.getInt("imageNum");
+				nickName= result.getString("nickName");
+				dreamJob= result.getString("dreamJob");
+				hobby= result.getString("hobby");
 			} catch (ParseException e) {
 				Log.i("Info", "Error: " + e.getMessage());
 			}
-		}
 		
+			ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Users");
+			query3.whereEqualTo("username", data.userName);
+			try {
+				ParseObject result = query3.find().get(0);
+				takenCount= result.getInt("takenCount");
+				shoutbuck= result.getInt("buck");
+				firstName = result.getString("firstName");
+				lastName = result.getString("lastName");
+			} catch (ParseException e) {
+				Log.i("Info", "Error: " + e.getMessage());
+			}
+		
+			data.firstName = firstName;
+			data.lastName = lastName;
+			avatar.nickName = nickName;
+			avatar.dreamJob = dreamJob;
+			avatar.hobby = hobby;
+			data.takenCount = takenCount;
+			
+			
 		TextView block1 = (TextView) findViewById(R.id.textViewlevel0);
 		if(takenCount>=0){
 			Log.i("count: ",""+takenCount);
 			block1.setText("unlocked");
-			block1.setTextColor(0xff00ff00);
+			block1.setTextColor(0xff00ff00);//
 		}
 		else {
 			block1.setText("locked");
@@ -73,10 +108,10 @@ public class AvatarImageEdit extends Activity {
 			block3.setTextColor(0xffff0000);
 		}		
 		setPrice();		
+		setcolor();
 	}
 
-public void setPrice() {
-		
+public void setPrice() {		
 		TextView[] price = new TextView[27];
 		price[0]=(TextView) findViewById(R.id.textView01);
 		price[1]=(TextView) findViewById(R.id.textView02);
@@ -107,10 +142,56 @@ public void setPrice() {
 		price[26]=(TextView) findViewById(R.id.textView27);
 		
 		for (int i = 0; i<27; i++){
-			price[i].setText("Price:"+ prices[i] + "SBs");
+			price[i].setText("Price:"+ avatarprice[i] + "SBs");
 			}					
 	}
 	
+	@SuppressLint("NewApi")
+	public void setcolor() {
+		ImageButton[] B = new ImageButton[27];
+		B[0]=(ImageButton)findViewById(R.id.ImageButton01);
+    	B[1]=(ImageButton)findViewById(R.id.ImageButton02);
+    	B[2]=(ImageButton)findViewById(R.id.ImageButton03);
+    	B[3]=(ImageButton)findViewById(R.id.ImageButton04);
+    	B[4]=(ImageButton)findViewById(R.id.ImageButton05);
+    	B[5]=(ImageButton)findViewById(R.id.ImageButton06);
+    	B[6]=(ImageButton)findViewById(R.id.ImageButton07);
+    	B[7]=(ImageButton)findViewById(R.id.ImageButton08);
+    	B[8]=(ImageButton)findViewById(R.id.ImageButton09);
+    	B[9]=(ImageButton)findViewById(R.id.ImageButton10);
+    	B[10]=(ImageButton)findViewById(R.id.ImageButton11);
+    	B[11]=(ImageButton)findViewById(R.id.ImageButton12);
+    	B[12]=(ImageButton)findViewById(R.id.ImageButton13);
+    	B[13]=(ImageButton)findViewById(R.id.ImageButton14);
+    	B[14]=(ImageButton)findViewById(R.id.ImageButton15);
+    	B[15]=(ImageButton)findViewById(R.id.ImageButton16);
+    	B[16]=(ImageButton)findViewById(R.id.ImageButton17);
+    	B[17]=(ImageButton)findViewById(R.id.ImageButton18);
+    	B[18]=(ImageButton)findViewById(R.id.ImageButton19);
+    	B[19]=(ImageButton)findViewById(R.id.ImageButton20);
+    	B[20]=(ImageButton)findViewById(R.id.ImageButton21);
+    	B[21]=(ImageButton)findViewById(R.id.ImageButton22);
+    	B[22]=(ImageButton)findViewById(R.id.ImageButton23);
+    	B[23]=(ImageButton)findViewById(R.id.ImageButton24);
+    	B[24]=(ImageButton)findViewById(R.id.ImageButton25);
+    	B[25]=(ImageButton)findViewById(R.id.ImageButton26);
+    	B[26]=(ImageButton)findViewById(R.id.ImageButton27);
+    	
+		if (takenCount < 20) {
+			for (int i = 18; i < 27; i++)
+				B[i].setImageAlpha(100);
+			if (takenCount < 10)
+				for (int i = 9; i < 18; i++)
+					B[i].setImageAlpha(100);
+		}  		
+		for (int i = 0; i < 27; i++) {
+			ch = mypic.charAt(i);
+			if (ch == '1')
+				B[i].setImageAlpha(100);
+			;
+		}		
+	}
+
 	public void AlertDialog1() {
 		new AlertDialog.Builder(this)
 				.setTitle("Error")
@@ -142,7 +223,7 @@ public void setPrice() {
 		new AlertDialog.Builder(this)
 				.setTitle("Error")
 				.setMessage(
-						"Sorry. Your Shoutbuck is " + data.buck + "\n"
+						"Sorry. Your Shoutbuck is " + shoutbuck + "\n"
 								+ "Get more shoutbucks to buy this avatar")
 				.setNeutralButton("close", null).show();
 	}
@@ -151,13 +232,13 @@ public void setPrice() {
 		new AlertDialog.Builder(this)
 				.setTitle("Reminder")
 				.setMessage(
-						"This will cost you " + prices[number - 1] + " SBs \n"
+						"This will cost you " + avatarprice[number - 1] + " SBs \n"
 								+ "Are you sure to continue?")
 				.setNegativeButton("continue",
 						new DialogInterface.OnClickListener() {
 							public void onClick(
 									DialogInterface dialoginterface, int k) {
-								data.buck = data.buck - prices[number - 1];
+								shoutbuck = shoutbuck - avatarprice[number - 1];
 								imagenumber = number;
 							}
 						}).setPositiveButton("cancel", null).show();
@@ -176,347 +257,174 @@ public void setPrice() {
 						}).setPositiveButton("cancel", null).show();
 	}
 
-	public void onAvatarImage1ButtonClick(View view) {
-		if (prices[0] > 0) {
-			if (data.buck >= prices[0])
-				AlertDialog5(1);
-			else
-				AlertDialog4();
+	public void AlertDialog7() {
+		new AlertDialog.Builder(this)
+				.setTitle("Reminder")
+				.setMessage(
+						"You hava already bought this avatar. \n"
+								+ "Enjoy other images")
+				.setNeutralButton("close", null).show();
+	}
+	
+	public void AlertDialog_level0(int number){
+		ch = mypic.charAt(number);
+		if (ch == '1')
+			AlertDialog7();
+		else {
+			if (avatarprice[number] > 0) {
+				if (shoutbuck >= avatarprice[number])
+					AlertDialog5(number+1);
+				else
+					AlertDialog4();
+			} else
+				AlertDialog6(number+1);
+		}
+	}
+	
+	public void AlertDialog_level1(int number){
+		ch = mypic.charAt(number);
+		if (ch == '1')
+			AlertDialog7();
+		else{
+		if (takenCount >= 10) {
+			if (avatarprice[number] > 0) {
+				if (shoutbuck >= avatarprice[number])
+					AlertDialog5(number+1);
+				else
+					AlertDialog4();
+			} else
+				AlertDialog6(number+1);
 		} else
-			AlertDialog6(1);
+			AlertDialog1();
+		}
+	}
+	
+	public void AlertDialog_level2(int number){
+		ch = mypic.charAt(number);
+		if (ch == '1')
+			AlertDialog7();
+		else{
+		if (takenCount >= 20) {
+			if (avatarprice[number] > 0) {
+				if (shoutbuck >= avatarprice[number])
+					AlertDialog5(number+1);
+				else
+					AlertDialog4();
+			} else
+				AlertDialog6(number+1);
+		} else if (takenCount >= 10)
+			AlertDialog2();
+		else
+			AlertDialog3();
+		}
+	}
+	
+	public void onAvatarImage1ButtonClick(View view) {
+		AlertDialog_level0(0);
 	}
 
 	public void onAvatarImage2ButtonClick(View view) {
-		if (prices[1] > 0) {
-			if (data.buck >= prices[1])
-				AlertDialog5(2);
-			else
-				AlertDialog4();
-		} else
-			AlertDialog6(2);
+		AlertDialog_level0(1);
 	}
 
 	public void onAvatarImage3ButtonClick(View view) {
-		if (prices[2] > 0) {
-			if (data.buck >= prices[2])
-				AlertDialog5(3);
-			else
-				AlertDialog4();
-		} else
-			AlertDialog6(3);
+		AlertDialog_level0(2);
 	}
 
 	public void onAvatarImage4ButtonClick(View view) {
-		if (prices[3] > 0) {
-			if (data.buck >= prices[3])
-				AlertDialog5(4);
-			else
-				AlertDialog4();
-		} else
-			AlertDialog6(4);
+		AlertDialog_level0(3);
 	}
 
 	public void onAvatarImage5ButtonClick(View view) {
-		if (prices[4] > 0) {
-			if (data.buck >= prices[4])
-				AlertDialog5(5);
-			else
-				AlertDialog4();
-		} else
-			AlertDialog6(5);
+		AlertDialog_level0(4);
 	}
 
 	public void onAvatarImage6ButtonClick(View view) {
-		if (prices[5] > 0) {
-			if (data.buck >= prices[5])
-				AlertDialog5(6);
-			else
-				AlertDialog4();
-		} else
-			AlertDialog6(6);
+		AlertDialog_level0(5);
 	}
 
 	public void onAvatarImage7ButtonClick(View view) {
-		if (prices[6] > 0) {
-			if (data.buck >= prices[6])
-				AlertDialog5(7);
-			else
-				AlertDialog4();
-		} else
-			AlertDialog6(7);
+		AlertDialog_level0(6);
 	}
 
 	public void onAvatarImage8ButtonClick(View view) {
-		if (prices[7] > 0) {
-			if (data.buck >= prices[7])
-				AlertDialog5(8);
-			else
-				AlertDialog4();
-		} else
-			AlertDialog6(8);
+		AlertDialog_level0(7);
 	}
 
 	public void onAvatarImage9ButtonClick(View view) {
-		if (prices[8] > 0) {
-			if (data.buck >= prices[8])
-				AlertDialog5(9);
-			else
-				AlertDialog4();
-		} else
-			AlertDialog6(9);
+		AlertDialog_level0(8);
 	}
-
+	
 	public void onAvatarImage10ButtonClick(View view) {
-		if (takenCount >= 10) {
-			if (prices[9] > 0) {
-				if (data.buck >= prices[9])
-					AlertDialog5(10);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(10);
-		} else
-			AlertDialog1();
+		AlertDialog_level1(9);
 	}
 
 	public void onAvatarImage11ButtonClick(View view) {
-		if (takenCount >= 10) {
-			if (prices[10] > 0) {
-				if (data.buck >= prices[10])
-					AlertDialog5(11);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(11);
-		} else
-			AlertDialog1();
+		AlertDialog_level1(10);
 	}
 
 	public void onAvatarImage12ButtonClick(View view) {
-		if (takenCount >= 10) {
-			if (prices[11] > 0) {
-				if (data.buck >= prices[11])
-					AlertDialog5(12);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(12);
-		} else
-			AlertDialog1();
-
+		AlertDialog_level1(11);
 	}
 
 	public void onAvatarImage13ButtonClick(View view) {
-		if (takenCount >= 10) {
-			if (prices[12] > 0) {
-				if (data.buck >= prices[12])
-					AlertDialog5(13);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(13);
-		} else
-			AlertDialog1();
+		AlertDialog_level1(12);
 	}
 
 	public void onAvatarImage14ButtonClick(View view) {
-		if (takenCount >= 10) {
-			if (prices[13] > 0) {
-				if (data.buck >= prices[13])
-					AlertDialog5(14);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(14);
-		} else
-			AlertDialog1();
+		AlertDialog_level1(13);
 	}
 
 	public void onAvatarImage15ButtonClick(View view) {
-		if (takenCount >= 10) {
-			if (prices[14] > 0) {
-				if (data.buck >= prices[14])
-					AlertDialog5(15);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(15);
-		} else
-			AlertDialog1();
+		AlertDialog_level1(14);
 	}
 
 	public void onAvatarImage16ButtonClick(View view) {
-		if (takenCount >= 10) {
-			if (prices[15] > 0) {
-				if (data.buck >= prices[15])
-					AlertDialog5(16);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(16);
-		} else
-			AlertDialog1();
+		AlertDialog_level1(15);
 	}
 
 	public void onAvatarImage17ButtonClick(View view) {
-		if (takenCount >= 10) {
-			if (prices[16] > 0) {
-				if (data.buck >= prices[16])
-					AlertDialog5(17);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(17);
-		} else
-			AlertDialog1();
+		AlertDialog_level1(16);
 	}
 
 	public void onAvatarImage18ButtonClick(View view) {
-		if (takenCount >= 10) {
-			if (prices[17] > 0) {
-				if (data.buck >= prices[17])
-					AlertDialog5(18);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(18);
-		} else
-			AlertDialog1();
+		AlertDialog_level1(17);
 	}
 
 	public void onAvatarImage19ButtonClick(View view) {
-		if (takenCount >= 20) {
-			if (prices[18] > 0) {
-				if (data.buck >= prices[18])
-					AlertDialog5(19);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(19);
-		} else if (takenCount >= 10)
-			AlertDialog2();
-		else
-			AlertDialog3();
+		AlertDialog_level2(18);
 	}
 
 	public void onAvatarImage20ButtonClick(View view) {
-		if (takenCount >= 20) {
-			if (prices[19] > 0) {
-				if (data.buck >= prices[19])
-					AlertDialog5(20);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(20);
-		} else if (takenCount >= 10)
-			AlertDialog2();
-		else
-			AlertDialog3();
+		AlertDialog_level2(19);
 	}
 
 	public void onAvatarImage21ButtonClick(View view) {
-		if (takenCount >= 20) {
-			if (prices[20] > 0) {
-				if (data.buck >= prices[20])
-					AlertDialog5(21);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(21);
-		} else if (takenCount >= 10)
-			AlertDialog2();
-		else
-			AlertDialog3();
+		AlertDialog_level2(20);
 	}
 
 	public void onAvatarImage22ButtonClick(View view) {
-		if (takenCount >= 20) {
-			if (prices[21] > 0) {
-				if (data.buck >= prices[21])
-					AlertDialog5(22);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(22);
-		} else if (takenCount >= 10)
-			AlertDialog2();
-		else
-			AlertDialog3();
+		AlertDialog_level2(21);
 	}
 
 	public void onAvatarImage23ButtonClick(View view) {
-		if (takenCount >= 20) {
-			if (prices[22] > 0) {
-				if (data.buck >= prices[22])
-					AlertDialog5(23);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(23);
-		} else if (takenCount >= 10)
-			AlertDialog2();
-		else
-			AlertDialog3();
+		AlertDialog_level2(22);
 	}
 
 	public void onAvatarImage24ButtonClick(View view) {
-		if (takenCount >= 20) {
-			if (prices[23] > 0) {
-				if (data.buck >= prices[23])
-					AlertDialog5(24);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(24);
-		} else if (takenCount >= 10)
-			AlertDialog2();
-		else
-			AlertDialog3();
+		AlertDialog_level2(23);
 	}
 
 	public void onAvatarImage25ButtonClick(View view) {
-		if (takenCount >= 20) {
-			if (prices[24] > 0) {
-				if (data.buck >= prices[24])
-					AlertDialog5(25);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(25);
-		} else if (takenCount >= 10)
-			AlertDialog2();
-		else
-			AlertDialog3();
+		AlertDialog_level2(24);
 	}
 
 	public void onAvatarImage26ButtonClick(View view) {
-		if (takenCount >= 20) {
-			if (prices[25] > 0) {
-				if (data.buck >= prices[25])
-					AlertDialog5(26);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(26);
-		} else if (takenCount >= 10)
-			AlertDialog2();
-		else
-			AlertDialog3();
+		AlertDialog_level2(25);
 	}
 
 	public void onAvatarImage27ButtonClick(View view) {
-		if (takenCount >= 20) {
-			if (prices[26] > 0) {
-				if (data.buck >= prices[26])
-					AlertDialog5(27);
-				else
-					AlertDialog4();
-			} else
-				AlertDialog6(27);
-		} else if (takenCount >= 10)
-			AlertDialog2();
-		else
-			AlertDialog3();
+		AlertDialog_level2(26);
 	}
 
 	public void onAvatarContinueButtonClick(View view) {
@@ -542,17 +450,25 @@ public void setPrice() {
 			avatar.imageNum = imagenumber;
 			avatar.userName = data.userName;
 			
+			mypicstore.append(mypic.substring(0, imagenumber-1));
+			mypicstore.append("1");
+			mypicstore.append(mypic.substring(imagenumber,27));
+			avatar.mystore = mypicstore.toString();
+	
 			ParseQuery<ParseObject> query = ParseQuery.getQuery("Avatars");
 			query.getInBackground(avatar.objectId, new GetCallback<ParseObject>() {
 				public void done(ParseObject object, ParseException e) {
 					if (e == null) {
 						object.put("imageNum", avatar.imageNum);
+						object.put("mystore", avatar.mystore);
 						object.saveInBackground();
 					} else {
 
 					}
 				}
 			});
+			
+			data.buck = shoutbuck;
 			ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Users");
 			query2.getInBackground(data.objectId, new GetCallback<ParseObject>() {
 				public void done(ParseObject object, ParseException e) {
@@ -564,9 +480,10 @@ public void setPrice() {
 					}
 				}
 			});
-			NextActivity();
+			NextActivity_Submit();
 		}
 	}
+	
 	
 	public void onAvatarBackButtonClick(View view) {
 		NextActivity();
@@ -582,6 +499,17 @@ public void setPrice() {
 		Intent intent = new Intent();
 		intent.setClass(AvatarImageEdit.this, MainActivity.class);
 		startActivity(intent);
-	}
+	}	
 
+	public void NextActivity_Submit() {
+		ParseObject userLog = new ParseObject("Logs");
+		userLog.put("userName", avatar.userName);
+		userLog.put("from", "AvatarImageEdit");
+		userLog.put("to", "MainActivity");
+		userLog.saveInBackground();
+
+		Intent intent = new Intent();
+		intent.setClass(AvatarImageEdit.this, AvatarInformationDisplayContinue.class);
+		startActivity(intent);
+	}	
 }

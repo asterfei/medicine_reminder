@@ -105,7 +105,7 @@ public class MainActivity extends Activity {
 
 		mTabPager.setAdapter(mPagerAdapter);
 	}
-
+//
 	public class MyOnClickListener implements View.OnClickListener {
 		private int index = 0;
 
@@ -210,6 +210,19 @@ public class MainActivity extends Activity {
 				AvatarInformationEdit.class);
 		startActivity(intent);
 	}
+	
+	public void AvatarAlreadyBought(View v) {
+		Intent intent = new Intent(MainActivity.this,
+				Avatar_alreadybought.class);
+		startActivity(intent);
+	}
+	
+	public void MyAvatarClick(View v) {
+		Intent intent = new Intent(MainActivity.this,
+				AvatarInformationDisplay.class);
+		startActivity(intent);
+	}
+	
 
 	public void onTookButtonClick(View view) {
 		data.notTakenCount = 0;

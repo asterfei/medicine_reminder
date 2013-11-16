@@ -27,7 +27,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="30dp"
         android:background="@drawable/login_editbox"
-        android:hint="Dream Hobby"
+        android:hint="Hobby"
         android:singleLine="true"
         android:textColor="#000"
         android:textSize="15sp" />

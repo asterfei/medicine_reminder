@@ -19,23 +19,62 @@ import android.widget.TextView;
 public class UserEdit extends Activity {
 
 	private Database data = Database.getInstance();
+	private AvatarInformation avatar = AvatarInformation.getInstance();
 
-	private String firstName = data.firstName;
-	private String lastName = data.lastName;
+	private String firstName;
+	private String lastName;
 	private String dateOfDiagnosis = data.dateOfDiagnosis;
 	private String phone = data.phone;
 	private String providerPhone = data.providerPhone;
+	private String nickName ;
+	private String hobby ;
+	private String dreamJob ;
+	private int takenCount;
+	private int shoutbuck;
+	private int imagenum;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.user_edit);
+		
+		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Avatars");
+		query2.whereEqualTo("userName", data.userName);
+		try {
+			ParseObject result = query2.find().get(0);
+			nickName= result.getString("nickName");
+			dreamJob= result.getString("dreamJob");
+			hobby= result.getString("hobby");
+			imagenum= result.getInt("imageNum");
+		} catch (ParseException e) {
+			Log.i("Info", "Error: " + e.getMessage());
+		}
+		
+		ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Users");
+		query3.whereEqualTo("username", data.userName);
+		try {
+			ParseObject result2 = query3.find().get(0);	
+			shoutbuck= result2.getInt("buck");
+			takenCount= result2.getInt("takenCount");			
+			firstName = result2.getString("firstName");
+			lastName = result2.getString("lastName");
+		} catch (ParseException e) {
+			Log.i("Info", "Error: " + e.getMessage());
+		}
+		
+		data.buck = shoutbuck;
+		data.takenCount = takenCount;
+		avatar.nickName = nickName;
+		avatar.dreamJob = dreamJob;
+		avatar.hobby = hobby;
+		avatar.imageNum = imagenum;
+		
 
 		TextView textView1 = (TextView) findViewById(R.id.firstname);
-		textView1.setText(data.firstName);
+		textView1.setText(firstName);
 
 		TextView textView2 = (TextView) findViewById(R.id.lastname);
-		textView2.setText(data.lastName);
+		textView2.setText(lastName);
 
 		TextView textView3 = (TextView) findViewById(R.id.date);
 		textView3.setText(data.dateOfDiagnosis);
@@ -94,12 +133,12 @@ public class UserEdit extends Activity {
 		} else {
 			setUserData();
 			editUser();
-			NextActivity();
+			NextActivity_Next();
 		}
 
 	}
 
-	public void NextActivity() {
+	public void NextActivity_Back() {
 		ParseObject userLog = new ParseObject("Logs");
 		userLog.put("userName", data.userName);
 		userLog.put("from", "UserEdit");
@@ -111,8 +150,20 @@ public class UserEdit extends Activity {
 		startActivity(intent);
 	}
 
+	public void NextActivity_Next() {
+		ParseObject userLog = new ParseObject("Logs");
+		userLog.put("userName", data.userName);
+		userLog.put("from", "UserEdit");
+		userLog.put("to", "AvatarInformationDisplay");
+		userLog.saveInBackground();
+
+		Intent intent = new Intent();
+		intent.setClass(UserEdit.this, AvatarInformationDisplayContinue.class);
+		startActivity(intent);
+	}
+	
 	public void onReturnClick(View view) {
-		NextActivity();
+		NextActivity_Back();
 	}
 
 	public void setUserData() {
@@ -144,8 +195,8 @@ public class UserEdit extends Activity {
 		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
-					object.put("firstName", firstName);
-					object.put("lastName", lastName);
+					object.put("firstName", data.firstName);
+					object.put("lastName", data.lastName);
 					object.put("dateOfDiagnosis", dateOfDiagnosis);
 					object.put("phone", phone);
 					object.put("providerPhone", providerPhone);

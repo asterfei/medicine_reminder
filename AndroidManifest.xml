@@ -38,7 +38,10 @@
         <activity android:name="com.example.medicinereminder.AvatarImageEdit"/>
         <activity android:name="com.example.medicinereminder.AvatarInformationAdd"/>
         <activity android:name="com.example.medicinereminder.AvatarInformationEdit"/>
-        <activity android:name="com.example.medicinereminder.AvatarInformationReturn"/>
+        <activity android:name="com.example.medicinereminder.Avatar_alreadybought"/>
+        <activity android:name="com.example.medicinereminder.AvatarInformationDisplay"/>
+        <activity android:name="com.example.medicinereminder.AvatarInformationDisplayContinue"/>
+        <activity android:name="com.example.medicinereminder.AvatarInformationDisplayRegistration"/>
         <activity android:name="com.example.medicinereminder.MainActivity"/>
         <activity android:name="com.example.medicinereminder.Login"/>
         <activity android:name="com.example.medicinereminder.Register"/>
