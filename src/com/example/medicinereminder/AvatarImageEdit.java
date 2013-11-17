@@ -240,6 +240,7 @@ public void setPrice() {
 									DialogInterface dialoginterface, int k) {
 								shoutbuck = shoutbuck - avatarprice[number - 1];
 								imagenumber = number;
+								JumptoNextPage();
 							}
 						}).setPositiveButton("cancel", null).show();
 	}
@@ -253,6 +254,7 @@ public void setPrice() {
 							public void onClick(
 									DialogInterface dialoginterface, int k) {
 								imagenumber = number;
+								JumptoNextPage();
 							}
 						}).setPositiveButton("cancel", null).show();
 	}
@@ -427,61 +429,65 @@ public void setPrice() {
 		AlertDialog_level2(26);
 	}
 
+	
+	public void JumptoNextPage(){
+		if (avatar.objectId.trim().equals("")) {
+			ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Avatars");
+			try {
+				List<ParseObject> results3 = query3.find();
+				for (ParseObject ava : results3) {
+					String tempUser2 = ava.getString("userName");
+					if (tempUser2.equals(data.userName)) {
+						avatar.objectId = ava.getObjectId();
+					}
+				}
+			} catch (ParseException e) {
+				Log.i("Info", "Error: " + e.getMessage());
+			}
+		}
+		avatar.imageNum = imagenumber;
+		avatar.userName = data.userName;
+		
+		mypicstore.append(mypic.substring(0, imagenumber-1));
+		mypicstore.append("1");
+		mypicstore.append(mypic.substring(imagenumber,27));
+		avatar.mystore = mypicstore.toString();
+
+		ParseQuery<ParseObject> query = ParseQuery.getQuery("Avatars");
+		query.getInBackground(avatar.objectId, new GetCallback<ParseObject>() {
+			public void done(ParseObject object, ParseException e) {
+				if (e == null) {
+					object.put("imageNum", avatar.imageNum);
+					object.put("mystore", avatar.mystore);
+					object.saveInBackground();
+				} else {
+
+				}
+			}
+		});
+		
+		data.buck = shoutbuck;
+		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Users");
+		query2.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			public void done(ParseObject object, ParseException e) {
+				if (e == null) {
+					object.put("buck", data.buck);
+					object.saveInBackground();
+				} else {
+
+				}
+			}
+		});
+		NextActivity_Submit();
+	}
+	
 	public void onAvatarContinueButtonClick(View view) {
 		if (imagenumber == 0) {
 			new AlertDialog.Builder(this).setTitle("Error")
 					.setMessage("Please select an avatar")
 					.setNeutralButton("close", null).show();
-		} else {
-			if (avatar.objectId.trim().equals("")) {
-				ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Avatars");
-				try {
-					List<ParseObject> results3 = query3.find();
-					for (ParseObject ava : results3) {
-						String tempUser2 = ava.getString("userName");
-						if (tempUser2.equals(data.userName)) {
-							avatar.objectId = ava.getObjectId();
-						}
-					}
-				} catch (ParseException e) {
-					Log.i("Info", "Error: " + e.getMessage());
-				}
-			}
-			avatar.imageNum = imagenumber;
-			avatar.userName = data.userName;
-			
-			mypicstore.append(mypic.substring(0, imagenumber-1));
-			mypicstore.append("1");
-			mypicstore.append(mypic.substring(imagenumber,27));
-			avatar.mystore = mypicstore.toString();
-	
-			ParseQuery<ParseObject> query = ParseQuery.getQuery("Avatars");
-			query.getInBackground(avatar.objectId, new GetCallback<ParseObject>() {
-				public void done(ParseObject object, ParseException e) {
-					if (e == null) {
-						object.put("imageNum", avatar.imageNum);
-						object.put("mystore", avatar.mystore);
-						object.saveInBackground();
-					} else {
-
-					}
-				}
-			});
-			
-			data.buck = shoutbuck;
-			ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Users");
-			query2.getInBackground(data.objectId, new GetCallback<ParseObject>() {
-				public void done(ParseObject object, ParseException e) {
-					if (e == null) {
-						object.put("buck", data.buck);
-						object.saveInBackground();
-					} else {
-
-					}
-				}
-			});
-			NextActivity_Submit();
-		}
+		} else 
+			JumptoNextPage();
 	}
 	
 	

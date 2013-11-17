@@ -97,15 +97,19 @@ public class AvatarInformationDisplayRegistration extends Activity{
 		level1 = (ImageView) findViewById(R.id.level1);
 		level2 = (ImageView) findViewById(R.id.level2);
 		
-		if (takenCount >= 20)
+		if (takenCount >= 20){
 			Levelinput.setText("2");
+			level0.setImageDrawable(getResources().getDrawable(R.drawable.level));
+			level1.setImageDrawable(getResources().getDrawable(R.drawable.level));
+			level2.setImageDrawable(getResources().getDrawable(R.drawable.level));
+		}
 		else if (takenCount >= 10) {
 			Levelinput.setText("1");
-			level2.setImageAlpha(0);
+			level0.setImageDrawable(getResources().getDrawable(R.drawable.level));
+			level1.setImageDrawable(getResources().getDrawable(R.drawable.level));
 		} else {
 			Levelinput.setText("0");
-			level2.setImageAlpha(0);
-			level1.setImageAlpha(0);
+			level0.setImageDrawable(getResources().getDrawable(R.drawable.level));
 		}
 	}
 

@@ -18,11 +18,11 @@
     <ImageView
         android:id="@+id/background_image"
         android:layout_width="wrap_content"
-        android:layout_height="220dp"
+        android:layout_height="280dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:scaleType="fitXY"
-        android:src="@drawable/profile_background3" />
+        android:src="@drawable/profile_background1" />
     
      <ImageButton
         android:id="@+id/personalimage"
@@ -35,7 +35,7 @@
         android:layout_marginLeft="35dp"
         android:background="@null"
         android:scaleType="fitXY"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="160dp" />
     
     <TextView
         android:id="@+id/textView1"
@@ -236,7 +236,7 @@
            android:layout_alignTop="@id/textView7"
            android:layout_marginLeft="30dp"
            android:layout_toRightOf="@id/textView77"
-           android:src="@drawable/level" />
+            />
        
         <ImageView
            android:id="@+id/level1"
@@ -246,7 +246,7 @@
            android:layout_alignTop="@id/textView7"
            android:layout_marginLeft="10dp"
            android:layout_toRightOf="@+id/level0"
-           android:src="@drawable/level" />
+            />
         
          <ImageView
            android:id="@+id/level2"
@@ -256,7 +256,7 @@
            android:layout_alignTop="@id/textView7"
            android:layout_marginLeft="10dp"
            android:layout_toRightOf="@+id/level1"
-           android:src="@drawable/level" />
+          />
        
         <TextView
             android:id="@+id/textView88"
@@ -290,11 +290,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="65dp"
         android:text="My Profile"
         android:textColor = "#FFFFFF"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="30sp" />
+        android:textSize="40sp" />
     
     </RelativeLayout>
 
