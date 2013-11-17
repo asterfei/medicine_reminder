@@ -34,6 +34,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="10dp"
                 android:text="Current Avatar"
+                
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:textSize="20sp" />
 
@@ -41,25 +42,25 @@
                 android:id="@+id/ImageButton1"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:layout_alignLeft="@id/textView2"
                 android:layout_below="@id/textView2"
                 android:layout_marginTop="10dp"
+                android:layout_toLeftOf="@+id/imagenull"
                 android:maxHeight="200dp"
                 android:maxWidth="90dp"
                 android:onClick="onAvatarCurrentImageButtonClick"
                 android:scaleType="fitCenter" />
-            
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/ImageButton1"
-                android:layout_marginTop="10dp"
-                android:text="Purchased Avatars"
-                android:layout_alignLeft="@+id/textView2"
-                android:textAppearance="?android:attr/textAppearanceLarge"
-                android:textSize="20sp" />
-            
+                     
+            <ImageButton
+                android:id="@+id/imagenull"
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_alignTop="@+id/ImageButton1"
+                android:maxHeight="200dp"
+                android:maxWidth="200dp"
+                android:layout_centerHorizontal="true"
+                android:background = "#FFFFFF"
+                android:scaleType="fitCenter" />
+           
            <ImageButton
                 android:id="@+id/goshopping"
                 android:layout_width="80dp"
@@ -69,18 +70,18 @@
                 android:background="@null"
                 android:onClick="GoShoppingClick"
                 android:scaleType="fitXY"
-                android:src="@drawable/goshopping4" />
-            
-            <ImageButton
-                android:id="@+id/imagenull"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_alignTop="@+id/ImageButton1"
-                android:layout_toRightOf="@+id/ImageButton1"
-                android:maxHeight="200dp"
-                android:maxWidth="200dp"
-                android:background = "#FFFFFF"
-                android:scaleType="fitCenter" />
+                android:src="@drawable/goshopping2" />
+           
+             <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ImageButton1"
+                android:layout_marginTop="10dp"
+                android:text="Purchased Avatars"
+                android:layout_alignLeft="@+id/textView2"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:textSize="20sp" />
             
            
             <ImageButton
