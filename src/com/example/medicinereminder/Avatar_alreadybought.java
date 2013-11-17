@@ -27,7 +27,6 @@ public class Avatar_alreadybought extends Activity {
 	private Database data = Database.getInstance();
 	private String mypic;
 	private int imagenumber;
-	private char ch;
 	
 	private String firstName;
 	private String lastName;
@@ -115,12 +114,6 @@ public class Avatar_alreadybought extends Activity {
 		text[25] = (TextView) findViewById(R.id.textView26);
 		text[26] = (TextView) findViewById(R.id.textView27);
 
-		/*
-		 * for (int i = 0; i < 27; i++) { ch = mypic.charAt(i); if (ch == '1')
-		 * {text[i].setText("      SET");
-		 * text[i].getPaint().setFakeBoldText(true);
-		 * text[i].setTextColor(0xff74c226); text[i].setTextSize(18); } }
-		 */
 	}
 
 	public void setcuttent() {
@@ -453,6 +446,18 @@ public class Avatar_alreadybought extends Activity {
 					});
 			NextActivity_Submit();
 		}
+	}
+	
+	public void GoShoppingClick(View View){
+		ParseObject userLog = new ParseObject("Logs");
+		userLog.put("userName", avatar.userName);
+		userLog.put("from", "Avatar_alreadybought");
+		userLog.put("to", "AvatarImageEdit");
+		userLog.saveInBackground();
+
+		Intent intent = new Intent();
+		intent.setClass(Avatar_alreadybought.this, AvatarImageEdit.class);
+		startActivity(intent);
 	}
 
 	public void onAvatarBackButtonClick(View view) {

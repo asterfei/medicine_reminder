@@ -24,15 +24,18 @@
         android:scaleType="fitXY"
         android:src="@drawable/profile_background3" />
     
-     <ImageView
-        android:id="@+id/personal_image"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
+     <ImageButton
+        android:id="@+id/personalimage"
+        android:layout_width="120dp"
+        android:layout_height="50dp"
         android:layout_alignBottom="@+id/background_image"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="112dp" />
+        android:onClick="onPersonalImageClick"
+        android:layout_marginLeft="35dp"
+        android:background="@null"
+        android:scaleType="fitXY"
+        android:layout_marginTop="100dp" />
     
     <TextView
         android:id="@+id/textView1"
@@ -40,7 +43,7 @@
         android:gravity="center"
         android:textColor="#FFFFFF"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/personal_image"
+        android:layout_below="@+id/personalimage"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="25dp"
         android:background="#56bbe7"
@@ -151,7 +154,7 @@
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:layout_alignTop="@id/textView1"
-         android:layout_below="@+id/personal_image"
+         android:layout_below="@+id/personalimage"
          android:layout_marginLeft="25dp"
          android:layout_toRightOf="@id/textView1"
          android:paddingLeft="2dp"
