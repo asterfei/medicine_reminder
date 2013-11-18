@@ -228,6 +228,31 @@ public class AvatarInformationDisplay extends Activity{
 		startActivity(intent);
 	}
 	
+	public void ongotomyavatarClick(View view){
+		ParseObject userLog = new ParseObject("Logs");
+		userLog.put("userName", avatar.userName);
+		userLog.put("from", "AvatarInformationDisplay");
+		userLog.put("to", "Avatar_alreadybought");
+		userLog.saveInBackground();
+
+		Intent intent = new Intent();
+		intent.setClass(AvatarInformationDisplay.this, Avatar_alreadybought.class);
+		startActivity(intent);
+	}
+	
+	public void ongoshoppingClick(View view){
+		ParseObject userLog = new ParseObject("Logs");
+		userLog.put("userName", avatar.userName);
+		userLog.put("from", "AvatarInformationDisplay");
+		userLog.put("to", "AvatarImageEdit");
+		userLog.saveInBackground();
+
+		Intent intent = new Intent();
+		intent.setClass(AvatarInformationDisplay.this, AvatarImageEdit.class);
+		startActivity(intent);
+	}
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		return true;
