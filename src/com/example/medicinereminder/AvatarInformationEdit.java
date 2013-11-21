@@ -21,50 +21,15 @@ public class AvatarInformationEdit extends Activity {
 	private AvatarInformation avatar = AvatarInformation.getInstance();
 	private Database data = Database.getInstance();
 
-	private String nickName ;
-	private String hobby ;
-	private String dreamJob ;
-	private String firstName;
-	private String lastName;
-	private int takenCount;
-	private int shoutbuck;
-	private int imagenum;
+	private String nickName = avatar.nickName;
+	private String hobby = avatar.hobby;
+	private String dreamJob = avatar.dreamJob;
+	private int imagenum = avatar.imageNum;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.avatar_information_edit);
-		
-		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Avatars");
-		query2.whereEqualTo("userName", data.userName);
-		try {
-			ParseObject result = query2.find().get(0);
-			nickName= result.getString("nickName");
-			dreamJob= result.getString("dreamJob");
-			hobby= result.getString("hobby");
-			imagenum= result.getInt("imageNum");
-		} catch (ParseException e) {
-			Log.i("Info", "Error: " + e.getMessage());
-		}
-		
-		ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Users");
-		query3.whereEqualTo("username", data.userName);
-		try {
-			ParseObject result2 = query3.find().get(0);	
-			shoutbuck= result2.getInt("buck");
-			takenCount= result2.getInt("takenCount");			
-			firstName = result2.getString("firstName");
-			lastName = result2.getString("lastName");
-		} catch (ParseException e) {
-			Log.i("Info", "Error: " + e.getMessage());
-		}
-		
-		avatar.imageNum = imagenum;
-		data.buck = shoutbuck;
-		data.firstName = firstName;
-		data.lastName = lastName;
-		data.takenCount = takenCount;
-			
 
 		TextView textView1 = (TextView) findViewById(R.id.edit_nameText);
 		textView1.setText(nickName);
@@ -229,7 +194,7 @@ public class AvatarInformationEdit extends Activity {
 		intent.setClass(AvatarInformationEdit.this, MainActivity.class);
 		startActivity(intent);
 	}
-	//
+	
 	public void NextActivity_Submit() {
 		ParseObject userLog = new ParseObject("Logs");
 		userLog.put("userName", avatar.userName);

@@ -26,17 +26,7 @@ public class Avatar_alreadybought extends Activity {
 	private AvatarInformation avatar = AvatarInformation.getInstance();
 	private Database data = Database.getInstance();
 	private String mypic;
-	private int imagenumber;
-	
-	private String firstName;
-	private String lastName;
-	private String nickName ;
-	private String hobby ;
-	private String dreamJob ;
-	private int takenCount;
-	private int shoutbuck;
-
-	
+	private int imagenumber = avatar.imageNum;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -48,33 +38,9 @@ public class Avatar_alreadybought extends Activity {
 		try {
 			ParseObject result = query2.find().get(0);
 			mypic = result.getString("mystore");
-			imagenumber = result.getInt("imageNum");
-			nickName= result.getString("nickName");
-			dreamJob= result.getString("dreamJob");
-			hobby= result.getString("hobby");
 		} catch (ParseException e) {
 			Log.i("Info", "Error: " + e.getMessage());
 		}
-		
-		ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Users");
-		query3.whereEqualTo("username", data.userName);
-		try {
-			ParseObject result = query3.find().get(0);
-			takenCount= result.getInt("takenCount");
-			shoutbuck= result.getInt("buck");
-			firstName = result.getString("firstName");
-			lastName = result.getString("lastName");
-		} catch (ParseException e) {
-			Log.i("Info", "Error: " + e.getMessage());
-		}
-		
-		data.buck = shoutbuck;
-		data.firstName = firstName;
-		data.lastName = lastName;
-		data.takenCount = takenCount;
-		avatar.nickName = nickName;
-		avatar.dreamJob = dreamJob;
-		avatar.hobby = hobby;
 		
 		setavatar();
 		setcolor();

@@ -24,15 +24,15 @@ public class AvatarInformationDisplayContinue extends Activity{
 	public static final int Tutorial_ID = 1;
 	private Database data = Database.getInstance();
 	private AvatarInformation avatar = AvatarInformation.getInstance();	
-	private String nickname;
-	private String username;
-	private String firstname;
-	private String lastname;
-	private String dreamjob;
-	private String hobbies;
-	private int imagenum;
-	private int shoutbuck;
-	private int takenCount;
+	private String nickname = avatar.nickName;
+	private String username = data.userName;
+	private String firstname = data.firstName;
+	private String lastname = data.lastName;
+	private String dreamjob = avatar.dreamJob;
+	private String hobbies = avatar.hobby;
+	private int imagenum = avatar.imageNum;
+	private int shoutbuck = data.buck;
+	private int takenCount = data.takenCount;
 	
 	TextView Usernameinput;
 	TextView Firstnameinput;
@@ -58,18 +58,7 @@ public class AvatarInformationDisplayContinue extends Activity{
 		
 		continuebutton = (Button)findViewById(R.id.returnbutton);
 		continuebutton.setText("Return");
-		
-		nickname = avatar.nickName;
-		username = data.userName;
-		firstname = data.firstName;
-		lastname = data.lastName;
-		dreamjob = avatar.dreamJob;
-		hobbies = avatar.hobby;
-		imagenum = avatar.imageNum;
-		shoutbuck = data.buck;
-		takenCount = data.takenCount;
-		
-		
+					
 		ImageButton personalimage = (ImageButton) findViewById(R.id.personalimage);
 		choosepicture(personalimage, imagenum);
 	

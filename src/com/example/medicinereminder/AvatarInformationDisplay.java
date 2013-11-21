@@ -25,15 +25,15 @@ public class AvatarInformationDisplay extends Activity{
 	public static final int Tutorial_ID = 1;
 	private Database data = Database.getInstance();
 	private AvatarInformation avatar = AvatarInformation.getInstance();	
-	private String nickname;
-	private String username;
-	private String firstname;
-	private String lastname;
-	private String dreamjob;
-	private String hobbies;
-	private int imagenum;
-	private int shoutbuck;
-	private int takenCount ;
+	private String nickname = avatar.nickName;
+	private String username = data.userName;
+	private String firstname = data.firstName;
+	private String lastname = data.lastName;
+	private String dreamjob = avatar.dreamJob;
+	private String hobbies = avatar.hobby;
+	private int imagenum = avatar.imageNum;
+	private int shoutbuck = data.buck;
+	private int takenCount = data.takenCount;
 	
 	TextView Usernameinput;
 	TextView Firstnameinput;
@@ -57,32 +57,7 @@ public class AvatarInformationDisplay extends Activity{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.avatar_information_display);		
 		continuebutton = (Button)findViewById(R.id.returnbutton);
-		continuebutton.setText("Return");
-		
-		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Avatars");
-		query2.whereEqualTo("userName", data.userName);
-		try {
-			ParseObject result = query2.find().get(0);
-			nickname= result.getString("nickName");
-			dreamjob= result.getString("dreamJob");
-			hobbies= result.getString("hobby");
-			imagenum= result.getInt("imageNum");
-		} catch (ParseException e) {
-			Log.i("Info", "Error: " + e.getMessage());
-		}
-		
-		ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Users");
-		query3.whereEqualTo("username", data.userName);
-		try {
-			ParseObject result2 = query3.find().get(0);	
-			shoutbuck= result2.getInt("buck");
-			takenCount= result2.getInt("takenCount");
-			username = result2.getString("username");
-			firstname = result2.getString("firstName");
-			lastname = result2.getString("lastName");
-		} catch (ParseException e) {
-			Log.i("Info", "Error: " + e.getMessage());
-		}
+		continuebutton.setText("Return");		
 		
 		ImageButton personalimage = (ImageButton) findViewById(R.id.personalimage);
 		choosepicture(personalimage, imagenum);

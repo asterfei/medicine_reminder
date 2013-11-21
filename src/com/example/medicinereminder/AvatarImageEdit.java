@@ -26,18 +26,13 @@ public class AvatarImageEdit extends Activity {
 	private int imagenumber;
 	
 	final static int totalImages = 27;
-	private int takenCount;
+	private int takenCount = data.takenCount;
 	int index;
 	StringBuffer mypicstore = new StringBuffer();
 	String mypic;
 	private char ch;
 	private int[] avatarprice = new int [totalImages];
-	private int shoutbuck;
-	private String firstName;
-	private String lastName;
-	private String nickName ;
-	private String hobby ;
-	private String dreamJob ;
+	private int shoutbuck = data.buck;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -51,32 +46,9 @@ public class AvatarImageEdit extends Activity {
 			try {
 				ParseObject result = query2.find().get(0);
 				mypic= result.getString("mystore");
-				imagenumber = result.getInt("imageNum");
-				nickName= result.getString("nickName");
-				dreamJob= result.getString("dreamJob");
-				hobby= result.getString("hobby");
 			} catch (ParseException e) {
 				Log.i("Info", "Error: " + e.getMessage());
 			}
-		
-			ParseQuery<ParseObject> query3 = ParseQuery.getQuery("Users");
-			query3.whereEqualTo("username", data.userName);
-			try {
-				ParseObject result = query3.find().get(0);
-				takenCount= result.getInt("takenCount");
-				shoutbuck= result.getInt("buck");
-				firstName = result.getString("firstName");
-				lastName = result.getString("lastName");
-			} catch (ParseException e) {
-				Log.i("Info", "Error: " + e.getMessage());
-			}
-		
-			data.firstName = firstName;
-			data.lastName = lastName;
-			avatar.nickName = nickName;
-			avatar.dreamJob = dreamJob;
-			avatar.hobby = hobby;
-			data.takenCount = takenCount;
 			
 			
 		TextView block1 = (TextView) findViewById(R.id.textViewlevel0);

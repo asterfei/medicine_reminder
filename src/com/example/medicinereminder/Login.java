@@ -84,7 +84,7 @@ public class Login extends Activity {
 				} catch (ParseException e) {
 					Log.i("Info", "Error: " + e.getMessage());
 				}
-//comment
+
 				ParseObject userLog = new ParseObject("Logs");
 				userLog.put("username", username);
 				userLog.put("from", "Login");
