@@ -3,19 +3,14 @@ package com.example.medicinereminder;
 import java.io.File;
 import java.util.ArrayList;
 
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-
-import android.net.Uri;
-import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -28,16 +23,21 @@ import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 public class MainActivity extends Activity {
 
 	public static MainActivity instance = null;
 
-	private Database data = Database.getInstance();
+	private final Database data = Database.getInstance();
 
 	private ViewPager mTabPager;
 	private ImageView mTabImg;
 	private ImageView mTab1, mTab2, mTab3;
-	private int zero = 0;
+	private final int zero = 0;
 	private int currIndex = 0;
 	private int one;
 	private int two;
@@ -105,7 +105,8 @@ public class MainActivity extends Activity {
 
 		mTabPager.setAdapter(mPagerAdapter);
 	}
-//
+
+	//
 	public class MyOnClickListener implements View.OnClickListener {
 		private int index = 0;
 
@@ -210,19 +211,24 @@ public class MainActivity extends Activity {
 				AvatarInformationEdit.class);
 		startActivity(intent);
 	}
-	
+
 	public void AvatarAlreadyBought(View v) {
 		Intent intent = new Intent(MainActivity.this,
 				Avatar_alreadybought.class);
 		startActivity(intent);
 	}
-	
+
 	public void MyAvatarClick(View v) {
 		Intent intent = new Intent(MainActivity.this,
 				AvatarInformationDisplay.class);
 		startActivity(intent);
 	}
-	
+
+	public void onCalendarButton(View v) {
+		Intent intent = new Intent(MainActivity.this,
+				CaldroidSampleActivity.class);
+		startActivity(intent);
+	}
 
 	public void onTookButtonClick(View view) {
 		data.notTakenCount = 0;
@@ -230,6 +236,7 @@ public class MainActivity extends Activity {
 		data.buck += 1;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Users");
 		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			@Override
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					// object.put("notTakenCount", 0);
@@ -244,6 +251,7 @@ public class MainActivity extends Activity {
 
 		ParseQuery<ParseObject> query2 = ParseQuery.getQuery("Users");
 		query2.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			@Override
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					int buck = data.buck + 1;
@@ -266,6 +274,7 @@ public class MainActivity extends Activity {
 		data.notTakenCount += 1;
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Users");
 		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			@Override
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					object.put("takenCount", 0);
@@ -286,6 +295,7 @@ public class MainActivity extends Activity {
 							+ "Would you like to call your provider?");
 			alertDialogBuilder.setPositiveButton("Yes",
 					new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							// TODO Auto-generated method stub
 							Intent callIntent = new Intent(Intent.ACTION_CALL);
@@ -296,6 +306,7 @@ public class MainActivity extends Activity {
 					});
 			alertDialogBuilder.setNegativeButton("No",
 					new DialogInterface.OnClickListener() {
+						@Override
 						public void onClick(DialogInterface dialog, int which) {
 							// TODO Auto-generated method stub
 							Toast.makeText(
@@ -339,6 +350,7 @@ public class MainActivity extends Activity {
 
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Users");
 		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			@Override
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					int buck = data.buck + 2;
@@ -355,6 +367,7 @@ public class MainActivity extends Activity {
 
 	}
 
+	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 			if (resultCode == RESULT_OK) {
@@ -371,6 +384,7 @@ public class MainActivity extends Activity {
 	public void onRefillButtonClick(View view) {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Users");
 		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			@Override
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					int buck = data.buck + 10;
@@ -390,6 +404,7 @@ public class MainActivity extends Activity {
 	public void onOfficeButtonClick(View view) {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Users");
 		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			@Override
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					int buck = data.buck + 10;

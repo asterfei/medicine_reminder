@@ -3,6 +3,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#eee"
+        android:onClick="onCalendarButton"
         android:orientation="vertical" >
         
 		<RelativeLayout
@@ -103,6 +104,42 @@
         		android:layout_centerVertical="true"
         		android:padding="8dp" 
         		android:text="Refill Time"
+        		android:textSize="17sp"		
+				android:textColor="#000" /> 
+			<ImageView
+            	android:layout_width="wrap_content"
+        		android:layout_height="wrap_content"        	     	
+        		android:scaleType="matrix"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentRight="true"
+        		android:src="@drawable/mm_submenu" />      					
+   		</RelativeLayout>
+      	
+		<RelativeLayout
+		    android:layout_width="fill_parent"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="14dp"
+		    android:background="@drawable/preference_single_item"
+		    android:clickable="true"
+		    android:gravity="center_vertical"
+		    android:onClick="onCalendarButton" >
+
+      		<ImageView
+      		    android:id="@+id/calendar_edit"
+		        android:layout_width="28dp"
+            	android:layout_height="28dp"
+            	android:layout_marginTop="4dp"     	     	
+        		android:scaleType="fitCenter"
+        		android:layout_centerVertical="true"
+        		android:layout_alignParentLeft="true"
+        		android:src="@drawable/cal" />    
+            <TextView
+        		android:layout_width="wrap_content" 
+        		android:layout_height="wrap_content"
+        		android:layout_toRightOf="@id/calendar_edit"
+        		android:layout_centerVertical="true"
+        		android:padding="8dp" 
+        		android:text="Calendar"
         		android:textSize="17sp"		
 				android:textColor="#000" /> 
 			<ImageView

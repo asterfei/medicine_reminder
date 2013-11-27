@@ -45,7 +45,11 @@
         <activity android:name="com.example.medicinereminder.MainActivity"/>
         <activity android:name="com.example.medicinereminder.Login"/>
         <activity android:name="com.example.medicinereminder.Register"/>
-        <activity android:name="com.example.medicinereminder.UserEdit"/>
+        <activity android:name="com.example.medicinereminder.UserEdit"/>    
+        <activity
+            android:name="com.example.medicinereminder.CaldroidSampleActivity"
+            android:label="@string/app_name" >
+        </activity>        
         <receiver android:process=":remote" android:name=".Mote"></receiver>
     </application>
     
