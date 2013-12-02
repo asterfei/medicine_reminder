@@ -10,6 +10,96 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
     </LinearLayout>
+    
+    <RelativeLayout 
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+        
+        <TextView
+            android:id="@+id/bluehint"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="20dp"
+            android:background="@color/blue"
+            android:layout_marginTop="30dp"/>
+        
+        <TextView
+            android:id="@+id/tookmedicine"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/bluehint"
+            android:layout_alignBottom="@+id/bluehint"
+            android:layout_toRightOf="@+id/bluehint"
+            android:text="Took Medicine"
+            android:textSize="18sp" />
+        
+        <TextView
+            android:id="@+id/greenhint"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/bluehint"
+            android:layout_alignLeft="@+id/bluehint"
+            android:layout_marginRight="20dp"
+            android:background="@color/green"
+            android:layout_marginTop="5dp"/>
+        
+        <TextView
+            android:id="@+id/tookpicture"
+            android:layout_below="@+id/bluehint"
+            android:layout_width="200dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/greenhint"
+            android:layout_alignBottom="@+id/greenhint"
+            android:layout_toRightOf="@+id/greenhint"
+            android:text="Took Picture"
+            android:textSize="18sp" />
+        
+        <TextView
+            android:id="@+id/redhint"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/greenhint"
+            android:layout_marginRight="20dp"
+            android:layout_alignLeft="@+id/bluehint"
+            android:background="@color/red"
+            android:layout_marginTop="5dp"/>
+        
+        <TextView
+            android:id="@+id/appointment"
+            android:layout_below="@+id/greenhint"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/redhint"
+            android:layout_alignBottom="@+id/redhint"
+            android:layout_toRightOf="@+id/redhint"
+            android:text="Appointment Time"
+            android:textSize="18sp" />
+        
+        <TextView
+            android:id="@+id/purplehint"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_below="@+id/redhint"
+            android:layout_alignLeft="@+id/bluehint"
+            android:layout_marginRight="20dp"
+            android:background="@color/purple"
+            android:layout_marginTop="5dp"/>
+        
+        <TextView
+            android:id="@+id/refilltime"
+            android:layout_below="@+id/redhint"
+            android:layout_width="300dp"
+            android:layout_height="25dp"
+            android:layout_alignTop="@+id/purplehint"
+            android:layout_alignBottom="@+id/purplehint"
+            android:layout_toRightOf="@+id/purplehint"
+            android:text="Refill Time"
+            android:textSize="18sp" />
+
+</RelativeLayout>
+    
 
 
 </LinearLayout>
