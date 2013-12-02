@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
@@ -23,28 +24,27 @@ public class CaldroidSampleActivity extends FragmentActivity {
 	private boolean undo = false;
 	private CaldroidFragment caldroidFragment;
 	private CaldroidFragment dialogCaldroidFragment;
+	private final Database data = Database.getInstance();
 
-	/*private void setCustomResourceForDates() {
-		Calendar cal = Calendar.getInstance();
+	protected void setCustomResourceForDates() {
 
-		//Min date is last 7 days
-		cal.add(Calendar.DATE, -18);
-		Date blueDate = cal.getTime();
-
-		 //Max date is next 7 days
-		cal = Calendar.getInstance();
-		cal.add(Calendar.DATE, 16);
-		Date greenDate = cal.getTime();
-
-		if (caldroidFragment != null) {
-			caldroidFragment.setBackgroundResourceForDate(R.color.blue,
-					blueDate);
-			caldroidFragment.setBackgroundResourceForDate(R.color.green,
-					greenDate);
-			caldroidFragment.setTextColorForDate(R.color.white, blueDate);
-			caldroidFragment.setTextColorForDate(R.color.white, greenDate);
+		// Min date is last 7 days
+		// cal.add(Calendar.DATE, -18);
+		List<Date> tookDates = data.tookDates;
+		for (Date da : tookDates) {
+			caldroidFragment.setBackgroundResourceForDate(R.color.blue, da);
 		}
-	}*/
+		
+		List<Date> picDates = data.picDates;
+		for (Date da : picDates) {
+			caldroidFragment.setBackgroundResourceForDate(R.color.green, da);
+		}
+		
+		caldroidFragment.setBackgroundResourceForDate(R.color.red, data.appointmentsTime);
+		
+		caldroidFragment.setBackgroundResourceForDate(R.color.purple, data.refillTime);
+		
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -84,12 +84,14 @@ public class CaldroidSampleActivity extends FragmentActivity {
 			caldroidFragment.setArguments(args);
 		}
 
-		//setCustomResourceForDates();
+		// setCustomResourceForDates();
 
 		// Attach to the activity
 		FragmentTransaction t = getSupportFragmentManager().beginTransaction();
 		t.replace(R.id.calendar1, caldroidFragment);
 		t.commit();
+
+		setCustomResourceForDates();
 
 		// Setup listener
 		final CaldroidListener listener = new CaldroidListener() {
@@ -129,44 +131,6 @@ public class CaldroidSampleActivity extends FragmentActivity {
 		// Setup Caldroid
 		caldroidFragment.setCaldroidListener(listener);
 
-		final TextView textView = (TextView) findViewById(R.id.textview);
-		Button showDialogButton = (Button) findViewById(R.id.show_dialog_button);
-
-		final Bundle state = savedInstanceState;
-		showDialogButton.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				// Setup caldroid to use as dialog
-				dialogCaldroidFragment = new CaldroidFragment();
-				dialogCaldroidFragment.setCaldroidListener(listener);
-
-				// If activity is recovered from rotation
-				final String dialogTag = "CALDROID_DIALOG_FRAGMENT";
-				if (state != null) {
-					dialogCaldroidFragment.restoreDialogStatesFromKey(
-							getSupportFragmentManager(), state,
-							"DIALOG_CALDROID_SAVED_STATE", dialogTag);
-					Bundle args = dialogCaldroidFragment.getArguments();
-					if (args == null) {
-						args = new Bundle();
-						dialogCaldroidFragment.setArguments(args);
-					}
-					args.putString(CaldroidFragment.DIALOG_TITLE,
-							"Select a date");
-				} else {
-					// Setup arguments
-					Bundle bundle = new Bundle();
-					// Setup dialogTitle
-					bundle.putString(CaldroidFragment.DIALOG_TITLE,
-							"Select a date");
-					dialogCaldroidFragment.setArguments(bundle);
-				}
-
-				dialogCaldroidFragment.show(getSupportFragmentManager(),
-						dialogTag);
-			}
-		});
 	}
 
 	/**

@@ -84,6 +84,18 @@ public class Login extends Activity {
 				} catch (ParseException e) {
 					Log.i("Info", "Error: " + e.getMessage());
 				}
+				
+				ParseQuery<ParseObject> query3 = ParseQuery.getQuery("MedsDate");
+				try {
+					List<ParseObject> result2 = query3.find();
+					for (ParseObject da : result2) {
+						if (da.getString("username").equals(username)) {
+							data.setDates(da);
+						}
+					}
+				} catch (ParseException e) {
+					Log.i("Info", "Error: " + e.getMessage());
+				}
 
 				ParseObject userLog = new ParseObject("Logs");
 				userLog.put("username", username);

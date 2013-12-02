@@ -1,6 +1,8 @@
 package com.example.medicinereminder;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import com.parse.ParseObject;
 
@@ -29,6 +31,8 @@ public class Database {
 	protected int takenCount = 0;
 	protected int[] avatarprices = new int[] { 0, 2, 0, 0, 3, 1, 6, 0, 0, 5,
 			8, 6, 5, 4, 5, 9, 6, 4, 10, 11, 9, 2, 3, 6, 8, 6, 5 };
+	protected List<Date> tookDates = new ArrayList<Date>();
+	protected List<Date> picDates = new ArrayList<Date>();
 
 	private Database() {
 
@@ -63,6 +67,14 @@ public class Database {
 		notTakenCount = user.getInt("notTakenCount");
 		takenCount = user.getInt("takenCount");
 		buck = user.getInt("buck");
+	}
+	
+	public void setDates(ParseObject da) {
+		String type = da.getString("type");
+		if(type.equals("Took")) 
+			tookDates.add(da.getDate("date"));
+		else
+			picDates.add(da.getDate("date"));
 	}
 
 }

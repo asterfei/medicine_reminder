@@ -2,6 +2,7 @@ package com.example.medicinereminder;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Date;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -266,6 +267,13 @@ public class MainActivity extends Activity {
 		new AlertDialog.Builder(this).setTitle("Good Job :)")
 				.setMessage("Keep it up!").setNeutralButton("close", null)
 				.show();
+		
+		Date newDate = new Date();
+		ParseObject medsDate = new ParseObject("MedsDate");
+		medsDate.put("username", data.userName);
+		medsDate.put("date", newDate);
+		medsDate.put("type", "Took");
+		medsDate.saveInBackground();
 
 	}
 
@@ -361,6 +369,13 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
+		
+		Date newDate = new Date();
+		ParseObject medsDate = new ParseObject("MedsDate");
+		medsDate.put("username", data.userName);
+		medsDate.put("date", newDate);
+		medsDate.put("type", "PillCam");
+		medsDate.saveInBackground();
 
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
 		startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
