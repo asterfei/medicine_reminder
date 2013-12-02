@@ -274,6 +274,8 @@ public class MainActivity extends Activity {
 		medsDate.put("date", newDate);
 		medsDate.put("type", "Took");
 		medsDate.saveInBackground();
+		
+		data.tookDates.add(newDate);
 
 	}
 
@@ -377,6 +379,8 @@ public class MainActivity extends Activity {
 		medsDate.put("type", "PillCam");
 		medsDate.saveInBackground();
 
+		data.picDates.add(newDate);
+		
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
 		startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
