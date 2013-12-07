@@ -43,6 +43,7 @@
         <activity android:name="com.example.medicinereminder.AvatarInformationDisplayContinue"/>
         <activity android:name="com.example.medicinereminder.AvatarInformationDisplayRegistration"/>
         <activity android:name="com.example.medicinereminder.MainActivity"/>
+        <activity android:name="com.example.medicinereminder.ImageDisplayActivity"/>
         <activity android:name="com.example.medicinereminder.Login"/>
         <activity android:name="com.example.medicinereminder.Register"/>
         <activity android:name="com.example.medicinereminder.UserEdit"/>    

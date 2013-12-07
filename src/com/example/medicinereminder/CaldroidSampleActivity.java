@@ -1,16 +1,27 @@
 package com.example.medicinereminder;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import com.parse.ParseObject;
 import com.roomorama.caldroid.CaldroidFragment;
+import com.roomorama.caldroid.CaldroidListener;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
 @SuppressLint("SimpleDateFormat")
 public class CaldroidSampleActivity extends FragmentActivity {
@@ -87,43 +98,74 @@ public class CaldroidSampleActivity extends FragmentActivity {
 		setCustomResourceForDates();
 
 		// Setup listener
-		/*final CaldroidListener listener = new CaldroidListener() {
+		final CaldroidListener listener = new CaldroidListener() {
 
 			@Override
 			public void onSelectDate(Date date, View view) {
 				Toast.makeText(getApplicationContext(), formatter.format(date),
-						Toast.LENGTH_SHORT).show();
+						Toast.LENGTH_LONG).show();
+					showDialog(date);
 
 			}
 
 			@Override
 			public void onChangeMonth(int month, int year) {
-				String text = "month: " + month + " year: " + year;
+				/*String text = "month: " + month + " year: " + year;
 				Toast.makeText(getApplicationContext(), text,
-						Toast.LENGTH_SHORT).show();
+						Toast.LENGTH_SHORT).show();*/
 			}
 
 			@Override
 			public void onLongClickDate(Date date, View view) {
-				Toast.makeText(getApplicationContext(),
+				/*Toast.makeText(getApplicationContext(),
 						"Long click " + formatter.format(date),
-						Toast.LENGTH_SHORT).show();
+						Toast.LENGTH_SHORT).show();*/
 			}
 
 			@Override
 			public void onCaldroidViewCreated() {
-				if (caldroidFragment.getLeftArrowButton() != null) {
+				/*if (caldroidFragment.getLeftArrowButton() != null) {
 					Toast.makeText(getApplicationContext(),
 							"Caldroid view is created", Toast.LENGTH_SHORT)
 							.show();
-				}
+				}*/
 			}
 
 		};
 
 		// Setup Caldroid
-		caldroidFragment.setCaldroidListener(listener);*/
+		caldroidFragment.setCaldroidListener(listener);
 
+	}
+	
+	public void onRnturnClick(View view) {
+		ParseObject userLog = new ParseObject("Logs");
+		userLog.put("userName", data.userName);
+		userLog.put("from", "AvatarImageEdit");
+		userLog.put("to", "MainActivity");
+		userLog.saveInBackground();
+
+		Intent intent = new Intent();
+		intent.setClass(CaldroidSampleActivity.this, MainActivity.class);
+		startActivity(intent);
+	}
+	
+	public void showDialog(final Date date){
+		new AlertDialog.Builder(this)
+		.setTitle("Camera")
+		.setMessage("Do you want to look the pic you took this day?")
+		.setNegativeButton("continue",
+				new DialogInterface.OnClickListener() {
+					public void onClick(
+							DialogInterface dialoginterface, int k) {
+						Intent intent = new Intent();
+						intent.setClass(CaldroidSampleActivity.this, ImageDisplayActivity.class);
+						intent.putExtra("month", date.getMonth());
+						intent.putExtra("day", date.getDate());
+						intent.putExtra("year", date.getYear());
+						startActivity(intent);
+					}
+				}).setPositiveButton("cancel", null).show();
 	}
 
 	/**
