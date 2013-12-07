@@ -94,7 +94,7 @@ public class CaldroidSampleActivity extends FragmentActivity {
 		setCustomResourceForDates();
 
 		// Setup listener
-		final CaldroidListener listener = new CaldroidListener() {
+		/*final CaldroidListener listener = new CaldroidListener() {
 
 			@Override
 			public void onSelectDate(Date date, View view) {
@@ -129,7 +129,7 @@ public class CaldroidSampleActivity extends FragmentActivity {
 		};
 
 		// Setup Caldroid
-		caldroidFragment.setCaldroidListener(listener);
+		caldroidFragment.setCaldroidListener(listener);*/
 
 	}
 

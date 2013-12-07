@@ -1,13 +1,18 @@
 package com.example.medicinereminder;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -26,6 +31,7 @@ import android.widget.Toast;
 
 import com.parse.GetCallback;
 import com.parse.ParseException;
+import com.parse.ParseFile;
 import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
@@ -386,10 +392,29 @@ public class MainActivity extends Activity {
 
 	}
 
+	@SuppressLint("SimpleDateFormat")
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 			if (resultCode == RESULT_OK) {
+				Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+"/test.jpg");
+				ByteArrayOutputStream stream = new ByteArrayOutputStream();
+				bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+			    byte[] newData = stream.toByteArray();
+			    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss");
+			    Date date = new Date();
+			    String curDatetimeStr =simpleDateFormat.format(date);
+			    
+			    ParseFile imgFile = new ParseFile (curDatetimeStr+".jpg", newData);
+		        imgFile.saveInBackground();
+
+		        //Info in Parse Dashboard
+		        Database database = Database.getInstance();
+		        ParseObject imageObj = new ParseObject ("ImageObj");    
+		        imageObj.put("userName", database.userName);
+		        imageObj.put("userFile", imgFile);
+		        imageObj.saveInBackground();
+			    
 			} else if (resultCode == RESULT_CANCELED) {
 				Toast.makeText(this, "Picture was not taken",
 						Toast.LENGTH_SHORT).show();
@@ -398,6 +423,7 @@ public class MainActivity extends Activity {
 						Toast.LENGTH_SHORT).show();
 			}
 		}
+		
 	}
 
 	public void onRefillButtonClick(View view) {
