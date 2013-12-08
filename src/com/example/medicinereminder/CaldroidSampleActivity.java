@@ -66,7 +66,6 @@ public class CaldroidSampleActivity extends FragmentActivity {
 		// version, uncomment below line ****
 		// caldroidFragment = new CaldroidSampleCustomFragment();
 
-		// Setup arguments
 
 		// If Activity is created after rotation
 		if (savedInstanceState != null) {
@@ -133,7 +132,6 @@ public class CaldroidSampleActivity extends FragmentActivity {
 
 		};
 
-		// Setup Caldroid
 		caldroidFragment.setCaldroidListener(listener);
 
 	}
@@ -153,7 +151,7 @@ public class CaldroidSampleActivity extends FragmentActivity {
 	public void showDialog(final Date date){
 		new AlertDialog.Builder(this)
 		.setTitle("Camera")
-		.setMessage("Do you want to look the pic you took this day?")
+		.setMessage("Do you want to check the picture you took on this day?")
 		.setNegativeButton("continue",
 				new DialogInterface.OnClickListener() {
 					public void onClick(
@@ -162,7 +160,7 @@ public class CaldroidSampleActivity extends FragmentActivity {
 						intent.setClass(CaldroidSampleActivity.this, ImageDisplayActivity.class);
 						intent.putExtra("month", date.getMonth());
 						intent.putExtra("day", date.getDate());
-						intent.putExtra("year", date.getYear());
+						intent.putExtra("year", date.getYear()+1900);
 						startActivity(intent);
 					}
 				}).setPositiveButton("cancel", null).show();
@@ -173,7 +171,6 @@ public class CaldroidSampleActivity extends FragmentActivity {
 	 */
 	@Override
 	protected void onSaveInstanceState(Bundle outState) {
-		// TODO Auto-generated method stub
 		super.onSaveInstanceState(outState);
 
 		if (caldroidFragment != null) {

@@ -58,7 +58,7 @@ public class RefillAdd extends Activity {
 							+ year);
 					refillTime.setDate(dayOfMonth);
 					refillTime.setMonth(month);
-					refillTime.setYear(year);
+					refillTime.setYear(year-1900);
 				}
 			};
 			dialog = new DatePickerDialog(this, dateListener,

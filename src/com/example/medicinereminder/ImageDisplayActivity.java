@@ -49,7 +49,7 @@ public class ImageDisplayActivity extends Activity {
 					Log.i("Info", createDate.getMonth() + " " + createDate.getDate() + " " + createDate.getYear());
 					if (createDate.getDate() == day
 							&& createDate.getMonth() == month
-							&& createDate.getYear() == year) {
+							&& createDate.getYear() + 1900 == year) {
 						flag = true;
 						ParseFile imageFile = (ParseFile) imageResult
 								.get("userFile");

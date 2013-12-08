@@ -38,7 +38,7 @@ public class AppointmentEdit extends Activity {
 
 		int day = data.appointmentsTime.getDate();
 		int month = data.appointmentsTime.getMonth();
-		int year = data.appointmentsTime.getYear();
+		int year = data.appointmentsTime.getYear()+1900;
 		
 		Log.i("day", Integer.toString(day));
 
@@ -69,7 +69,7 @@ public class AppointmentEdit extends Activity {
 							+ year);
 					appointmentsTime.setDate(dayOfMonth);
 					appointmentsTime.setMonth(month);
-					appointmentsTime.setYear(year);
+					appointmentsTime.setYear(year-1900);
 				}
 			};
 			dialog = new DatePickerDialog(this, dateListener,

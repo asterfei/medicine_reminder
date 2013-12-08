@@ -56,7 +56,7 @@ public class AppointmentAdd extends Activity {
 							+ year);
 					appointmentsTime.setDate(dayOfMonth);
 					appointmentsTime.setMonth(month);
-					appointmentsTime.setYear(year);
+					appointmentsTime.setYear(year-1900);
 				}
 			};
 			dialog = new DatePickerDialog(this, dateListener,

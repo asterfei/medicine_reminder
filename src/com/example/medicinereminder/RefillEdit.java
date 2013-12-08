@@ -38,7 +38,7 @@ public class RefillEdit extends Activity {
 
 		int day = data.refillTime.getDate();
 		int month = data.refillTime.getMonth();
-		int year = data.refillTime.getYear();
+		int year = data.refillTime.getYear()+1900;
 
 		TextView textView = (TextView) findViewById(R.id.refill);
 		textView.setText(Integer.toString(month + 1) + "/" + Integer.toString(day)
@@ -67,7 +67,7 @@ public class RefillEdit extends Activity {
 							+ year);
 					refillTime.setDate(dayOfMonth);
 					refillTime.setMonth(month);
-					refillTime.setYear(year);
+					refillTime.setYear(year-1900);
 				}
 			};
 			dialog = new DatePickerDialog(this, dateListener,
