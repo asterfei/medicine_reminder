@@ -4,11 +4,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import com.parse.GetCallback;
-import com.parse.ParseException;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -21,6 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TimePicker;
 
+import com.parse.GetCallback;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 public class MedicationAdd extends Activity {
 
 	private final int PICK_1 = 1;
@@ -29,12 +29,12 @@ public class MedicationAdd extends Activity {
 
 	private String medication1 = "";
 	private String medication2 = "";
-	private Date medicationTime1 = new Date();
-	private Date medicationTime2 = new Date();
+	private final Date medicationTime1 = new Date();
+	private final Date medicationTime2 = new Date();
 	private String mins = "";
 	private String message = "";
 
-	private Database data = Database.getInstance();
+	private final Database data = Database.getInstance();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -51,6 +51,7 @@ public class MedicationAdd extends Activity {
 		pickTime2.setOnClickListener(timeBtnListener2);
 	}
 
+	@Override
 	protected Dialog onCreateDialog(int id) {
 
 		Calendar calendar = Calendar.getInstance();
@@ -75,7 +76,7 @@ public class MedicationAdd extends Activity {
 
 			dialog = new TimePickerDialog(this, timeListener1,
 					calendar.get(Calendar.HOUR_OF_DAY),
-					calendar.get(Calendar.MINUTE), false); // 是否为二十四制
+					calendar.get(Calendar.MINUTE), false); // æ˜¯å¦ä¸ºäºŒåå››åˆ¶
 			break;
 
 		case PICK_2:
@@ -96,7 +97,7 @@ public class MedicationAdd extends Activity {
 
 			dialog = new TimePickerDialog(this, timeListener2,
 					calendar.get(Calendar.HOUR_OF_DAY),
-					calendar.get(Calendar.MINUTE), false); // 是否为二十四制
+					calendar.get(Calendar.MINUTE), false); // æ˜¯å¦ä¸ºäºŒåå››åˆ¶
 			break;
 
 		default:
@@ -181,6 +182,26 @@ public class MedicationAdd extends Activity {
 		data.mins = Integer.parseInt(mins);
 		data.message = message;
 
+		// this is where notification edits begin
+		/*
+		 * Calendar cal = Calendar.getInstance(); cal.set(Calendar.HOUR_OF_DAY,
+		 * medicationTime1.getHours()); cal.set(Calendar.MINUTE,
+		 * medicationTime1.getMinutes()); cal.set(Calendar.SECOND, 05);
+		 * 
+		 * Intent intent = new Intent(this, Mote.class);
+		 * intent.putExtra("Message", message); PendingIntent pendingIntent =
+		 * PendingIntent.getActivity(this.getApplicationContext(), 0, new
+		 * Intent(this.getApplicationContext(), AlarmActivity.class),0);
+		 * //PendingIntent pendingIntent =
+		 * PendingIntent.getActivity(this.getApplicationContext(), 0, intent,0);
+		 * AlarmManager alarmManager = (AlarmManager)
+		 * getSystemService(ALARM_SERVICE);
+		 * 
+		 * alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+		 * pendingIntent);
+		 */
+		// this is where notification edits end
+
 		if (data.objectId.trim().equals("")) {
 			ParseQuery<ParseObject> query = ParseQuery.getQuery("Users");
 			try {
@@ -200,6 +221,7 @@ public class MedicationAdd extends Activity {
 	public void addMedication() {
 		ParseQuery<ParseObject> query = ParseQuery.getQuery("Users");
 		query.getInBackground(data.objectId, new GetCallback<ParseObject>() {
+			@Override
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					object.put("medication1", medication1);
