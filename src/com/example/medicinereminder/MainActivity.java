@@ -273,14 +273,14 @@ public class MainActivity extends Activity {
 		new AlertDialog.Builder(this).setTitle("Good Job :)")
 				.setMessage("Keep it up!").setNeutralButton("close", null)
 				.show();
-		
+
 		Date newDate = new Date();
 		ParseObject medsDate = new ParseObject("MedsDate");
 		medsDate.put("username", data.userName);
 		medsDate.put("date", newDate);
 		medsDate.put("type", "Took");
 		medsDate.saveInBackground();
-		
+
 		data.tookDates.add(newDate);
 
 	}
@@ -370,6 +370,7 @@ public class MainActivity extends Activity {
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					int buck = data.buck + 2;
+					data.buck = data.buck + 2;
 					object.put("buck", buck);
 					object.saveInBackground();
 				} else {
@@ -377,7 +378,7 @@ public class MainActivity extends Activity {
 				}
 			}
 		});
-		
+
 		Date newDate = new Date();
 		ParseObject medsDate = new ParseObject("MedsDate");
 		medsDate.put("username", data.userName);
@@ -386,7 +387,7 @@ public class MainActivity extends Activity {
 		medsDate.saveInBackground();
 
 		data.picDates.add(newDate);
-		
+
 		intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);
 		startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
@@ -397,24 +398,27 @@ public class MainActivity extends Activity {
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE) {
 			if (resultCode == RESULT_OK) {
-				Bitmap bitmap = BitmapFactory.decodeFile(Environment.getExternalStorageDirectory()+"/test.jpg");
+				Bitmap bitmap = BitmapFactory.decodeFile(Environment
+						.getExternalStorageDirectory() + "/test.jpg");
 				ByteArrayOutputStream stream = new ByteArrayOutputStream();
 				bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
-			    byte[] newData = stream.toByteArray();
-			    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy_MM_dd_hh_mm_ss");
-			    Date date = new Date();
-			    String curDatetimeStr =simpleDateFormat.format(date);
-			    
-			    ParseFile imgFile = new ParseFile (curDatetimeStr+".jpg", newData);
-		        imgFile.saveInBackground();
+				byte[] newData = stream.toByteArray();
+				SimpleDateFormat simpleDateFormat = new SimpleDateFormat(
+						"yyyy_MM_dd_hh_mm_ss");
+				Date date = new Date();
+				String curDatetimeStr = simpleDateFormat.format(date);
 
-		        //Info in Parse Dashboard
-		        Database database = Database.getInstance();
-		        ParseObject imageObj = new ParseObject ("ImageObj");    
-		        imageObj.put("userName", database.userName);
-		        imageObj.put("userFile", imgFile);
-		        imageObj.saveInBackground();
-			    
+				ParseFile imgFile = new ParseFile(curDatetimeStr + ".jpg",
+						newData);
+				imgFile.saveInBackground();
+
+				// Info in Parse Dashboard
+				Database database = Database.getInstance();
+				ParseObject imageObj = new ParseObject("ImageObj");
+				imageObj.put("userName", database.userName);
+				imageObj.put("userFile", imgFile);
+				imageObj.saveInBackground();
+
 			} else if (resultCode == RESULT_CANCELED) {
 				Toast.makeText(this, "Picture was not taken",
 						Toast.LENGTH_SHORT).show();
@@ -423,7 +427,7 @@ public class MainActivity extends Activity {
 						Toast.LENGTH_SHORT).show();
 			}
 		}
-		
+
 	}
 
 	public void onRefillButtonClick(View view) {
@@ -433,6 +437,7 @@ public class MainActivity extends Activity {
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					int buck = data.buck + 10;
+					data.buck = data.buck + 10;
 					object.put("buck", buck);
 					object.saveInBackground();
 				} else {
@@ -453,6 +458,7 @@ public class MainActivity extends Activity {
 			public void done(ParseObject object, ParseException e) {
 				if (e == null) {
 					int buck = data.buck + 10;
+					data.buck = data.buck + 10;
 					object.put("buck", buck);
 					object.saveInBackground();
 				} else {
