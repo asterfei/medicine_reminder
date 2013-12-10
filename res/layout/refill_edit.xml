@@ -6,13 +6,23 @@
     android:orientation="vertical" >
 
 
+     <TextView
+        android:id="@+id/refilltext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="90dp"
+        android:text="Next Refill Time"
+        android:textSize="15sp" />
+     
     <EditText
         android:id="@+id/refill"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/refilltext"
         android:background="@drawable/login_editbox"
         android:hint="Next Refill Time"
         android:singleLine="true"

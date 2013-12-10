@@ -6,13 +6,22 @@
     android:orientation="vertical" >
 
 
+    <TextView
+        android:id="@+id/appointmenttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="90dp"
+        android:text="Next Appointment Time"
+        android:textSize="15sp" />
     <EditText
         android:id="@+id/appointment"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop= "15dp"
+        android:layout_below="@+id/appointmenttext"
         android:background="@drawable/login_editbox"
         android:hint="Next Appointment Time"
         android:singleLine="true"

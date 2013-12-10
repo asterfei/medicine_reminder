@@ -14,41 +14,72 @@
        android:layout_marginTop="20dp"
        android:src="@drawable/thor8" />
         
+    <TextView
+        android:id="@+id/nicknametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/personal_image"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="20dp"
+        android:text="Nick Name"
+        android:textSize="15sp" />
+    
     <EditText
         android:id="@+id/edit_nameText"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/nicknametext"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="140dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_editbox"
         android:hint="Nickname"
         android:singleLine="true"
         android:textColor="#000"
+        android:textSize="15sp" />
+    
+     <TextView
+        android:id="@+id/hobbytext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_nameText"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="Hobby"
         android:textSize="15sp" />
 
     <EditText
         android:id="@+id/edit_hobbytext"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_nameText"
-        android:layout_marginLeft="20dp"
+        android:layout_below="@+id/hobbytext"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_editbox"
         android:hint="Hobby"
         android:singleLine="true"
         android:textColor="#000"
+        android:textSize="15sp" />
+    
+    <TextView
+        android:id="@+id/dreamjobtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edit_hobbytext"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="10dp"
+        android:text="Dream Job"
         android:textSize="15sp" />
 
     <EditText
         android:id="@+id/edit_jobtext"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/edit_hobbytext"
+        android:layout_below="@+id/dreamjobtext"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/login_editbox"
         android:hint="Dream Job"
         android:singleLine="true"

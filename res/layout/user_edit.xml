@@ -5,69 +5,119 @@
     android:gravity="center_horizontal"
     android:orientation="vertical" >
         
+     <TextView
+        android:id="@+id/firstnametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="30dp"
+        android:text="First Name"
+        android:textSize="15sp" />
+     
      <EditText
          android:id="@+id/firstname"
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
          android:layout_marginLeft="20dp"
          android:layout_marginRight="20dp"
-         android:layout_marginTop="50dp"
+         android:layout_marginTop="5dp"
+         android:layout_below="@+id/firstnametext"
          android:background="@drawable/login_editbox"
          android:hint="First Name"
          android:singleLine="true"
          android:textColor="#000"
          android:textSize="15sp" />
      
+     <TextView
+        android:id="@+id/lastnametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/firstname"
+        android:layout_marginTop="10dp"
+        android:text="Last Name"
+        android:textSize="15sp" />
+     
     <EditText
         android:id="@+id/lastname"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/firstname"
+        android:layout_below="@+id/lastnametext"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/login_editbox"
         android:hint="Last Name"
         android:singleLine="true"
         android:textColor="#000"
         android:textSize="15sp" />
      
+    <TextView
+        android:id="@+id/datetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/lastname"
+        android:layout_marginTop="10dp"
+        android:text="Date of Diagnosis(mm/dd/yyyy)"
+        android:textSize="15sp" />
+    
     <EditText
         android:id="@+id/date"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/lastname"
+        android:layout_below="@+id/datetext"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/login_editbox"
         android:hint="Date of Diagnosis(mm/dd/yyyy)"
         android:singleLine="true"
         android:textColor="#000"
+        android:textSize="15sp" />
+    
+    <TextView
+        android:id="@+id/phonetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/date"
+        android:layout_marginTop="10dp"
+        android:text="Phone Number"
         android:textSize="15sp" />
       
     <EditText
         android:id="@+id/phone"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/date"
+        android:layout_below="@+id/phonetext"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/login_editbox"
         android:hint="Phone Number"
         android:singleLine="true"
         android:textColor="#000"
         android:textSize="15sp" />
     
+     <TextView
+        android:id="@+id/docphonetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_below="@+id/phone"
+        android:layout_marginTop="10dp"
+        android:text="Provider's Phone Number"
+        android:textSize="15sp" />
+    
     <EditText
         android:id="@+id/docphone"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/phone"
+        android:layout_below="@+id/docphonetext"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         android:background="@drawable/login_editbox"
         android:hint="Provider's Phone Number"
         android:singleLine="true"

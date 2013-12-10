@@ -31,7 +31,7 @@
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/personal_edit"
             android:padding="8dp"
-            android:text="Upadte User Information"
+            android:text="Update User Information"
             android:textColor="#000"
             android:textSize="17sp" />
 
