@@ -14,6 +14,7 @@
         android:layout_marginTop="90dp"
         android:text="Next Appointment Time"
         android:textSize="15sp" />
+    
     <EditText
         android:id="@+id/appointment"
         android:layout_width="fill_parent"
