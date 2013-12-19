@@ -10,8 +10,10 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 
 import android.app.Activity;
+import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,7 +35,8 @@ public class MedicationEdit extends Activity {
 	private String medication1 = data.medication1;
 	private String medication2 = data.medication2;
 	private Date medicationTime1 = data.medicationTime1;
-	private Date medicationTime2 = data.medicationTime2;
+	private Date medicationTime2 = data.medicationTime2;	
+
 	private String mins = Integer.toString(data.mins);
 	private String message = data.message;
 
@@ -260,6 +263,44 @@ public class MedicationEdit extends Activity {
 				Log.i("Error", e.getMessage());
 			}
 		}
+		
+		// this is where notification edits begin
+
+		Calendar cal = Calendar.getInstance();
+		cal.set(Calendar.HOUR_OF_DAY, medicationTime1.getHours());
+		cal.set(Calendar.MINUTE, medicationTime1.getMinutes());
+		cal.set(Calendar.SECOND, 05);
+		cal.add(Calendar.MINUTE, -Integer.parseInt(mins));
+
+		Intent intent = new Intent(this, Mote.class);
+		int appWidgetId = 0;
+		intent.putExtra("intentId", appWidgetId);
+		PendingIntent pendingIntent = PendingIntent.getActivity(
+				this.getApplicationContext(), appWidgetId,
+				new Intent(this.getApplicationContext(), AlarmActivity.class),
+				0);
+		AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+		alarmManager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(),
+				pendingIntent);
+
+		Calendar cal2 = Calendar.getInstance();
+		cal2.set(Calendar.HOUR_OF_DAY, medicationTime2.getHours());
+		cal2.set(Calendar.MINUTE, medicationTime2.getMinutes());
+		cal2.set(Calendar.SECOND, 05);
+		cal2.add(Calendar.MINUTE, -Integer.parseInt(mins));
+
+		Intent intent2 = new Intent(this, Mote.class);
+		int appWidgetId2 = 1;
+		intent2.putExtra("intentId", appWidgetId2);
+		PendingIntent pendingIntent2 = PendingIntent.getActivity(
+				this.getApplicationContext(), appWidgetId2,
+				new Intent(this.getApplicationContext(), AlarmActivity.class),
+				0);
+		AlarmManager alarmManager2 = (AlarmManager) getSystemService(ALARM_SERVICE);
+		alarmManager2.set(AlarmManager.RTC_WAKEUP, cal2.getTimeInMillis(),
+				pendingIntent2);
+
+		// this is where notification edits end
 	}
 
 	public void editMedication() {

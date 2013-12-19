@@ -98,7 +98,7 @@ public class Login extends Activity {
 				}
 
 				ParseObject userLog = new ParseObject("Logs");
-				userLog.put("username", username);
+				userLog.put("userName", username);
 				userLog.put("from", "Login");
 				userLog.put("to", "MainActivity");
 				userLog.saveInBackground();

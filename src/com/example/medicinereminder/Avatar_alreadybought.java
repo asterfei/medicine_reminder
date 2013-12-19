@@ -44,8 +44,7 @@ public class Avatar_alreadybought extends Activity {
 		
 		setavatar();
 		setcolor();
-		setcuttent();
-		
+		setcuttent();		
 	}
 
 	public void setavatar() {
